@@ -1,0 +1,365 @@
+display-flex,
+#val,
+#button,
+.steps ul,
+.actions ul,
+.actions ul li a,
+.title,
+.number {
+    display: flex;
+    display: -webkit-flex
+}
+
+list-type-ulli,
+ul,
+.actions ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+a:focus,
+a:active {
+    text-decoration: none;
+    outline: none;
+    transition: all 300ms ease 0s;
+    -moz-transition: all 300ms ease 0s;
+    -webkit-transition: all 300ms ease 0s;
+    -o-transition: all 300ms ease 0s;
+    -ms-transition: all 300ms ease 0s
+}
+
+/* ******************************************* Fieldset ******************************************* */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0
+}
+
+.steps {
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    padding: 12px 20px
+}
+
+.steps ul {
+    justify-content: space-around;
+    -moz-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    -o-justify-content: space-around;
+    -ms-justify-content: space-around
+}
+
+.steps ul li {
+    padding-right: 80px;
+    padding-left: 0;
+    position: relative
+}
+
+.steps ul li:after {
+    position: absolute;
+    width: 1px;
+    height: 30px;
+    content: "";
+    background: #ebebeb;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%)
+}
+
+.steps ul li a {
+    color: #999;
+    text-decoration: none;
+    font-weight: 700
+}
+
+.steps ul li:last-child:after {
+    width: 0
+}
+
+.steps ul .current a {
+    color: #222
+}
+
+.steps ul .current a .number {
+    border: 2px solid #222
+}
+
+.steps ul .done a {
+    color: #1abc9c
+}
+
+.steps ul .done a .number {
+    position: relative;
+    font-size: 0;
+    border: 2px solid #1abc9c
+}
+
+.steps ul .done a .number:after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: #1abc9c;
+    font-family: material-design-iconic-font;
+    content: '\f26b';
+    font-weight: 700
+}
+
+.actions {
+    position: absolute;
+    bottom: 14px;
+    width: 100%;
+    padding: 0 20px;
+    right: 0
+}
+
+.actions ul {
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+    justify-content: flex-end;
+    -moz-justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    -o-justify-content: flex-end;
+    -ms-justify-content: flex-end;
+    width: 100%
+}
+
+.actions ul .disabled {
+    display: none
+}
+
+.actions ul li {
+    margin-left: 10px
+}
+
+.actions ul li:first-child a {
+    background: #f8f8f8;
+    color: #999
+}
+
+.actions ul li:first-child a:hover {
+    background-color: #dfdfdf
+}
+
+.actions ul li a {
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    background: #1abc9c;
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+    justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -o-justify-content: center;
+    -ms-justify-content: center;
+    text-decoration: none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px
+}
+
+.actions ul li a:hover {
+    background-color: #148f77
+}
+
+.content {
+    overflow: hidden
+}
+
+.content .current {
+    padding-top: 60px
+}
+
+.content h3 {
+    display: none
+}
+
+.fieldset-content {
+    height: 465px;
+    border-bottom: 1px solid #ebebeb;
+    /* padding-right: 110px */
+}
+
+.fieldset-footer {
+    padding: 28px 0
+}
+
+.fieldset-footer span {
+    color: #999
+}
+
+.title {
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center
+}
+
+.number {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    align-items: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -ms-align-items: center;
+    justify-content: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -o-justify-content: center;
+    -ms-justify-content: center;
+    border: 2px solid #999;
+    margin-right: 15px
+}
+
+@media screen and (max-width:992px) {
+    .container {
+        width: calc(100% - 40px);
+        max-width: 100%
+    }
+
+    .bar-strength {
+        display: none
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .steps ul,
+    .form-row {
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -o-flex-direction: column;
+        -ms-flex-direction: column
+    }
+
+    .steps ul li:after {
+        width: 0
+    }
+
+    .title {
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .form-row .form-date,
+    .form-row .form-select,
+    .form-file,
+    input,
+    select,
+    textarea,
+    .form-textarea textarea,
+
+    .form-row .form-group:first-child,
+    .form-row .form-group:last-child {
+        float: none
+    }
+
+    input,
+    select,
+    textarea {
+        margin-right: 0
+    }
+
+    .fieldset-content {
+        padding-right: 0;
+        height: 600px
+    }
+
+    .form-group,
+    .form-select,
+    .form-radio,
+    .form-textarea,
+    .form-date {
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -o-flex-direction: column;
+        -ms-flex-direction: column
+    }
+
+    label {
+        width: 100%;
+        text-align: left;
+        margin-right: 0;
+        margin-bottom: 15px
+    }
+
+    .form-row {
+        padding-left: 0
+    }
+}
+
+@media screen and (max-width:600px) {
+    #val {
+        width: 99%
+    }
+
+    #button {
+        top: 60px;
+        width: 100%
+    }
+
+    .fieldset-footer {
+        padding: 78px 0
+    }
+
+    .actions ul li a {
+        width: 100px
+    }
+
+    .steps ul li {
+        padding-right: 0
+    }
+}
+
+@media screen and (max-width:480px) {
+    
+    .form-radio-flex input+label {
+        margin-bottom: 20px
+    }
+
+    .form-flex {
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+        -o-flex-direction: column;
+        -ms-flex-direction: column
+    }
+
+    .form-date-item #expiry_date,
+    .form-date-item #expiry_year {
+        width: 100%;
+        margin-bottom: 10px
+    }
+
+    .fieldset-content {
+        height: 750px
+    }
+}

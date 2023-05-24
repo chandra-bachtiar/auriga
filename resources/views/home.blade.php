@@ -65,8 +65,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Pertanyaan</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $pertanyaan }}</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Business Unit</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $bisnis_unit }}</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
@@ -113,7 +113,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Sekolah</h5>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
                                         <span class="h2 font-weight-bold mb-0">{{ $sekolah }}</span>
                                     </div>
                                     <div class="col-auto">

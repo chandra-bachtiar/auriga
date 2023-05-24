@@ -3,11 +3,11 @@
 @section('title', '| Welcome')
 @section('content')
     <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-3">
+    <div class="header bg-gradient-secondary py-7 py-lg-8 pt-lg-3">
         <div class="separator separator-bottom separator-skew zindex-100">
             <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
                 xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+                <polygon class="fill-primary" points="2560 0 2560 100 0 100"></polygon>
             </svg>
         </div>
     </div>
@@ -41,41 +41,33 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-mdb-interval="2000">
-                            <img src="{{ asset('img/theme/1.jpg') }}" class="d-block w-100 c" alt="...">
+                            <img src="{{ asset('img/theme/bb1.jpg') }}" class="d-block w-100 c" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <a href="{{ route('survey.create') }}" class="btn btn-icon btn-primary mb-4" type="button">
+                                <a href="https://dchauriga.com/en/solutions/market-management-solutions/" class="btn btn-icon btn-primary mb-4" type="button">
                                     <span class="btn-inner--icon"><i class="ni ni-book-bookmark"></i></span>
-                                    <span class="btn-inner--text">Lakukan Survey</span>
+                                    <span class="btn-inner--text">Lihat artikel</span>
                                 </a>
-                                <p>Sebagai negara hukum, segala prilaku pengendara diatur dalam aturan hukum yaitu dengan
-                                    kewajiban mematuhi Undang-undang Nomor 22 Tahun 2009 tentang Lalu Lintas dan Angkutan
-                                    Jalan.</p>
+                                <p>Our local regulatory, marketing and sales teams will work with you to understand your requirements and help you achieve market success.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/theme/2.jpg') }}" class="d-block w-100 c" alt="...">
+                            <img src="{{ asset('img/theme/bb2.jpg') }}" class="d-block w-100 c" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <a href="{{ route('survey.create') }}" class="btn btn-icon btn-primary mb-4" type="button">
+                                <a href="https://dchauriga.com/en/solutions/supply-chain-solutions/" class="btn btn-icon btn-primary mb-4" type="button">
                                     <span class="btn-inner--icon"><i class="ni ni-book-bookmark"></i></span>
-                                    <span class="btn-inner--text">Lakukan Survey</span>
+                                    <span class="btn-inner--text">Lihat artikel</span>
                                 </a>
-                                <p>Dikeluarkannya Undang-undang Nomor 22 Tahun 2009 bertujuan untuk mewujudkan keamanan,
-                                    keselamatan, ketertiban dan kelancaran lalu lintas (KAMSELTIBCAR LANTAS), terwujudnya
-                                    etika berlalu lintas adalah citra budaya bangsa, terwujudnya penegakan dan kepastian
-                                    hukum bagi masyarakat.</p>
+                                <p>Our network covers Asia with a full range of transport and warehousing services equipped with the technology to provide total transparency and real-time data. Our supply chains are designed to be responsive and optimised to your in-market needs.</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/theme/3.jpg') }}" class="d-block w-100 c" alt="...">
+                            <img src="{{ asset('img/theme/bb3.jpg') }}" class="d-block w-100 c" alt="...">
                             <div class="carousel-caption d-none d-md-block">
-                                <a href="{{ route('survey.create') }}" class="btn btn-icon btn-primary mb-4" type="button">
+                                <a href="https://dchauriga.com/en/solutions/products-and-networks/" class="btn btn-icon btn-primary mb-4" type="button">
                                     <span class="btn-inner--icon"><i class="ni ni-book-bookmark"></i></span>
-                                    <span class="btn-inner--text">Lakukan Survey</span>
+                                    <span class="btn-inner--text">Lihat artikel</span>
                                 </a>
-                                <p>Sekolah bisa jadi memberikan andil untuk menjadi pelopor keselamatan atau bahkan
-                                    kecelakaan dan kematian. Tidak sedikit sekarang kita bisa lihat begitu banyaknya pelajar
-                                    dibawah umur dengan sengaja bahkan membawa motor atau mobil saat bersekolah, terlepas
-                                    disimpan dilingkungan sekolah atau diluar sekolah.</p>
+                                <p>Our teams have a wide range of product expertise in pharmaceuticals, devices and consumer health products and a wide customer network to help you achieve your market penetration potential.</p>
                             </div>
                         </div>
                     </div>
