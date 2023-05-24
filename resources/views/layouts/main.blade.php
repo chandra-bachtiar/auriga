@@ -30,7 +30,6 @@
         thead input {
             width: 100%;
         }
-
     </style>
 
 </head>
@@ -77,10 +76,57 @@
     <script src="{{ asset('js/argon.js?v=1.1.0') }}"></script>
     <!-- Demo JS - remove this in your project -->
     <script src="{{ asset('js/demo.min.js') }}"></script>
-    <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.min.js') }}">
-    </script>
+    <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.min.js') }}"></script>
     @yield('date-filter')
     <script type="text/javascript">
+        $(document).ready(function() {
+            minDate = new DateTime($('#min'), {
+                format: 'MMMM Do YYYY'
+            });
+            maxDate = new DateTime($('#max'), {
+                format: 'MMMM Do YYYY'
+            });
+
+            var table = $('#myTable', function() {
+                $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-secondary');
+            }).DataTable({
+                dom: 'Bfrtip',
+                lengthChange: true,
+                buttons: [{
+                        extend: 'pdfHtml5',
+                        orientation: 'potrait',
+                        pageSize: 'LEGAL',
+                        download: 'open',
+                        exportOptions: {
+                            columns: ':visible',
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible',
+                        }
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: ':visible',
+                        }
+                    },
+                    'copy'
+                ],
+                language: {
+                    paginate: {
+                        previous: "<i class='fas fa-angle-left'>",
+                        next: "<i class='fas fa-angle-right'>"
+                    }
+                },
+                orderCellsTop: true,
+                fixedHeader: true,
+            });
+        });
+    </script>
+    {{-- <script type="text/javascript">
         $(document).ready(function() {
 
             // Create date inputs
@@ -206,7 +252,7 @@
                 $('#eyeSlash').show();
             }
         }
-    </script>
+    </script> --}}
     <script>
         function startTime() {
             const today = new Date();

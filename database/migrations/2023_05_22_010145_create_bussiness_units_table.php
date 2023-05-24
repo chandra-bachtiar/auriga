@@ -15,6 +15,7 @@ class CreateBussinessUnitsTable extends Migration
     {
         Schema::create('bussiness_units', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('gambar');
             $table->string('agency_code');
             $table->string('business_unit');
             $table->string('brand_name');

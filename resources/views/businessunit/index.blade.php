@@ -17,13 +17,11 @@
                             </ol>
                         </nav>
                     </div>
-                    @can('sekolah-create')
                         <div class="col-lg-6 col-5 text-right">
                             <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
                                 data-target=".bd-create-sekolah">{{ __('Add Bussiness Unit') }}</button>
                             @include('businessunit.modal.create')
                         </div>
-                    @endcan
                 </div>
             </div>
         </div>
@@ -53,6 +51,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>
+                                    <th>Image</th>
                                     <th>Agency Code</th>
                                     <th>Business Unit</th>
                                     <th>Brand Name</th>
@@ -63,6 +62,7 @@
                             <tfoot>
                                 <tr>
                                     <th>{{ __('#') }}</th>
+                                    <th>Image</th>
                                     <th>Agency Code</th>
                                     <th>Business Unit</th>
                                     <th>Brand Name</th>
@@ -74,6 +74,15 @@
                                 @foreach ($bu as $b)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
+                                        <td style="vertical-align: middle">
+                                            @if (strlen($b->gambar) > 0)
+                                                <img src="{{ asset('img/business_unit/' . $b->gambar) }}" width="80px"
+                                                    class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                            @elseif($b->gambar == null)
+                                                <img src="{{ asset('img/profile/user-default.png') }}" width="80px"
+                                                    class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                            @endif
+                                        </td>
                                         <td style="vertical-align: middle">{{ $b->agency_code }}</td>
                                         <td style="vertical-align: middle">{{ $b->business_unit }}</td>
                                         <td style="vertical-align: middle">{{ $b->brand_name }}</td>

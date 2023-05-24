@@ -10,5 +10,5 @@ class BussinessUnit extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['agency_code','business_unit','brand_name','company'];
+    protected $fillable = ['gambar','agency_code','business_unit','brand_name','company'];
 }

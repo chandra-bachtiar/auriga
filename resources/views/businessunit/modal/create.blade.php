@@ -97,6 +97,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label float-left">{{__('Image')}}</label>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-picture"></i></span>
+                                        </div>
+                                        <input type="file" class="form-control" name="gambar" required>
+                                    </div>
+                                    @error('gambar')
+                                        <small class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" href="{{ route('business-unit.index') }}" class="btn btn-secondary"
                                 data-dismiss="modal">{{ __('Close') }}</button>

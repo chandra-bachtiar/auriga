@@ -17,13 +17,11 @@
                             </ol>
                         </nav>
                     </div>
-                    @can('sekolah-create')
                         <div class="col-lg-6 col-5 text-right">
                             <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
                                 data-target=".bd-create-sekolah">{{ __('Add Product') }}</button>
                             @include('product.modal.create')
                         </div>
-                    @endcan
                 </div>
             </div>
         </div>
@@ -53,31 +51,50 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>
-                                    <th>Agency Code</th>
                                     <th>Business Unit</th>
-                                    <th>Brand Name</th>
-                                    <th>Company</th>
+                                    <th>Item Number</th>
+                                    <th>SKU DCH</th>
+                                    <th>Item Name</th>
+                                    <th>UOM</th>
+                                    <th>CBM</th>
+                                    <th>KGS</th>
+                                    <th>Price</th>
                                     <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>{{ __('#') }}</th>
-                                    <th>Agency Code</th>
                                     <th>Business Unit</th>
-                                    <th>Brand Name</th>
-                                    <th>Company</th>
+                                    <th>Item Number</th>
+                                    <th>SKU DCH</th>
+                                    <th>Item Name</th>
+                                    <th>UOM</th>
+                                    <th>CBM</th>
+                                    <th>KGS</th>
+                                    <th>Price</th>
                                     <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($bu as $b)
+                                @php
+                                    function idr($p)
+                                    {
+                                        $result = 'Rp. ' . number_format($p, 2, ',', '.');
+                                        return $result;
+                                    }
+                                @endphp
+                                @foreach ($product as $p)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle">{{ $b->agency_code }}</td>
-                                        <td style="vertical-align: middle">{{ $b->business_unit }}</td>
-                                        <td style="vertical-align: middle">{{ $b->brand_name }}</td>
-                                        <td style="vertical-align: middle">{{ $b->company }}</td>
+                                        <td style="vertical-align: middle">{{ $p->bu->business_unit }}</td>
+                                        <td style="vertical-align: middle">{{ $p->item_number }}</td>
+                                        <td style="vertical-align: middle">{{ $p->sku_dch }}</td>
+                                        <td style="vertical-align: middle">{{ $p->item_number }}</td>
+                                        <td style="vertical-align: middle">{{ $p->uom }}</td>
+                                        <td style="vertical-align: middle">{{ $p->cbm }}</td>
+                                        <td style="vertical-align: middle">{{ $p->kgs }}</td>
+                                        <td style="vertical-align: middle">{{ idr($p->price) }}</td>
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
