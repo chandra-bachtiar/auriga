@@ -22713,7 +22713,6 @@ p {
     font-size: 1.25rem;
     font-weight: 300;
     line-height: 1.7;
-
     margin-top: 1.5rem;
 }
 
@@ -23326,7 +23325,7 @@ button.section-darker:focus {
 }
 
 .fill-primary {
-    fill: #5e72e4;
+    fill: #68548a;
 }
 
 .stroke-primary {

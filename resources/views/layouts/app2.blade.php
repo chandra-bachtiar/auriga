@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>SSL @yield('title')</title>
+    <title>DCH AURIGA @yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" href="img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{ asset('css/argon.css?v=1.1.0') }}" type="text/css">
 </head>
 
-<body class="bg-default">
+<body class="bg-primary">
     @include('sweetalert::alert')
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div class="container">
@@ -57,19 +57,19 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                       <a href="{{ route('login') }}" class="nav-link">
-                        <span class="nav-link-inner--text">Login</span>
+                        <span class="nav-link-inner--text text-primary font-weight-bold lead">Login</span>
                       </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                       <a href="{{ route('register') }}" class="nav-link">
                         <span class="nav-link-inner--text">Register</span>
                       </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> --}}
+                    {{-- <li class="nav-item">
                       <a href="{{ route('survey.create') }}" class="nav-link">
                         <span class="nav-link-inner--text">Survey</span>
                       </a>
-                    </li>
+                    </li> --}}
                   </ul>
                   <hr class="d-lg-none" />
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">

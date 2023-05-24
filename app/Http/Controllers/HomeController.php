@@ -21,7 +21,8 @@ use App\Models\{
     Salary,
     Presence,
     sekolah,
-    survei
+    survei,
+    BussinessUnit
 };
 use Spatie\Permission\Models\Role;
 use Image;
@@ -45,7 +46,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $key = '7520f1fda4b1d04ee6691e97ced63acde95bb768';
+        $key = '49108aed37f9da3fe06030dc20dd2c1f34bd11f5';
         $country = 'ID';
         $year = date('Y', time());
         $month = date('m', time());
@@ -60,12 +61,13 @@ class HomeController extends Controller
         $sekolah = sekolah::count();
         $bobot = bobot::count();
         $users = User::count();
+        $bisnis_unit = BussinessUnit::count();
         $auth = auth()->user();
         $checkProfil = $auth->date_of_birth == null || $auth->place_of_birth == null || $auth->gender == null || $auth->address == null || $auth->last_education == null || $auth->phone == null;
 
         if ($auth->hasRole('admin')) {
             return view('home', compact(
-            'response','kategori','users','pertanyaan','sekolah','checkProfil'
+            'response','kategori','users','pertanyaan','sekolah','checkProfil','bisnis_unit'
             ));
 
         } else if ($auth->hasRole('supervisor')){

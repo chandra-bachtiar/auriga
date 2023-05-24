@@ -70,48 +70,54 @@
                             </ul>
                         </div>
                     </li>
-                    @can('bobot-list')
+                    {{-- @can('bobot-list')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('bobots.index') }}">
                                 <i class="fa fa-filter text-brown"></i>
                                 <span class="nav-link-text">Bobot</span>
                             </a>
                         </li>
-                    @endcan
-                    @can('kategori-list')
+                    @endcan --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('po.index') }}">
+                            <i class="fa fa-shopping-cart text-purple"></i>
+                            <span class="nav-link-text">Create Purchase Order</span>
+                        </a>
+                    </li>
+                    {{-- @can('kategori-list')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('kategoris.index') }}">
                                 <i class="fa fa-list text-green"></i>
                                 <span class="nav-link-text">Kategori</span>
                             </a>
                         </li>
-                    @endcan
-                    @can('pertanyaan-list')
+                    @endcan --}}
+                    {{-- @can('pertanyaan-list')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('pertanyaans.index') }}">
                                 <i class="fa fa-question-circle text-yellow"></i>
                                 <span class="nav-link-text">Pertanyaan</span>
                             </a>
                         </li>
-                    @endcan
-                    @can('sekolah-list')
+                    @endcan --}}
+                    {{-- @can('sekolah-list')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('sekolahs.index') }}">
                                 <i class="fa fa-graduation-cap text-info"></i>
                                 <span class="nav-link-text">Sekolah</span>
                             </a>
                         </li>
-                    @endcan
-                    <li class="nav-item">
+                    @endcan --}}
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('departements.index') }}">
                             <i class="fa fa-university text-primary"></i>
                             <span class="nav-link-text">Instansi</span>
                         </a>
-                    </li>
+                    </li> --}}
                     @hasrole('admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('trashs.index') }}">
-                            <i class="fas fa-trash-alt text-gray"></i>
+                            <i class="fas fa-trash-alt text-red"></i>
                             <span class="nav-link-text">Trash</span>
                         </a>
                     </li>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author">
-    <title>SSL @yield('title')</title>
+    <title>DCH AURIGA @yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/brand/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -24,6 +24,8 @@
 
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('css/argon.css?v=1.1.0') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/formwizard/formwizard.css') }}" type="text/css">
+
 
     <!-- CSS for filter -->
     <style>
@@ -72,6 +74,9 @@
     <script src="{{ asset('vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+    <script src="{{ asset('js/formwizard/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/formwizard/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('js/formwizard/main.js') }}"></script>
     <!-- Argon JS -->
     <script src="{{ asset('js/argon.js?v=1.1.0') }}"></script>
     <!-- Demo JS - remove this in your project -->
