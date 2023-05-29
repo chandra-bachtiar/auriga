@@ -81,16 +81,20 @@
 <div class="row">
     <div class="col-xl-6">
         <div class="form-group">
-            <label class="form-control-label">{{ __('Brand Name') }}</label>
+            <label class="form-control-label">{{ __('Image') }}</label>
             <div class="input-group input-group-merge">
                 <div class="input-group input-group-merge">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-font"></i></span>
                     </div>
-                    <input class="form-control" value="{{ $bu->brand_name }}" placeholder="Brand Name" type="text" name="brand_name"
-                        required>
+                    <input type="file" value="{{ $bu->gambar }}" class="form-control" name="gambar">
                 </div>
-                @error('brand_name')
+                @if (strlen($bu->gambar) > 0)
+                        <br>
+                        <img src="{{ asset('img/business_unit/' . $bu->gambar) }}" width="80px" class="mt-2"
+                            style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                    @endif
+                @error('gambar')
                     <small class="text-danger" role="alert">
                         {{ $message }}
                     </small>

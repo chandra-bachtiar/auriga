@@ -15,28 +15,29 @@
                 @endif
                 <!-- Card header -->
                 <div class="card-header">
-                    <h5 class="modal-title" style="text-align: start">{{ __('Create New Business Unit') }}</h5>
+                    <h5 class="modal-title" style="text-align: start">{{ __('Create New Product') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <!-- Card body -->
                 <div class="card-body">
-                    <form action="{{ route('business-unit.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!-- Input groups with icon -->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label float-left">{{__('Agency Code')}}</label>
+                                    <label class="form-control-label float-left">{{__('Business Unit')}}</label>
                                     <div class="input-group input-group-merge">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fa fa-font"></i></span>
-                                        </div>
-                                        <input class="form-control" placeholder="Agency Code" type="text" name="agency_code"
-                                            required>
+                                        <select class="form-control" data-toggle="select" name="bussines_unit_id" required>
+                                            <option value="" selected>{{__('Choose Business Unit')}}</option>
+                                            @foreach ($bu as $k)
+                                                <option value="{{ $k->id }}">{{ $k->business_unit }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    @error('agency_code')
+                                    @error('business_unit_id')
                                         <small class="text-danger" role="alert">
                                             {{ $message }}
                                         </small>
@@ -45,15 +46,15 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label float-left">{{__('Business Unit')}}</label>
+                                    <label class="form-control-label float-left">{{__('Item Number')}}</label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-font"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Business Unit" type="text" name="business_unit"
+                                        <input class="form-control" placeholder="Item Number" type="text" name="item_number"
                                             required>
                                     </div>
-                                    @error('business_unit')
+                                    @error('item_number')
                                         <small class="text-danger" role="alert">
                                             {{ $message }}
                                         </small>
@@ -64,15 +65,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label float-left">{{__('Brand Name')}}</label>
+                                    <label class="form-control-label float-left">{{__('SKU DCH')}}</label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-font"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Brand Name" type="text" name="brand_name"
+                                        <input class="form-control" placeholder="SKU DCH" type="text" name="sku_dch"
                                             required>
                                     </div>
-                                    @error('brand_name')
+                                    @error('sku_dch')
                                         <small class="text-danger" role="alert">
                                             {{ $message }}
                                         </small>
@@ -81,15 +82,88 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label float-left">{{__('Company')}}</label>
+                                    <label class="form-control-label float-left">{{__('Item Name')}}</label>
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-font"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Company" type="text" name="company"
+                                        <input class="form-control" placeholder="Item Name" type="text" name="item_name"
                                             required>
                                     </div>
-                                    @error('company')
+                                    @error('item_name')
+                                        <small class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label float-left">{{__('UOM')}}</label>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-font"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="UOM" type="number" name="uom"
+                                            required>
+                                    </div>
+                                    @error('uom')
+                                        <small class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label float-left">{{__('CBM')}}</label>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-font"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="CBM" type="number" step="0.000001" name="cbm"
+                                            required>
+                                    </div>
+                                    @error('cbm')
+                                        <small class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label float-left">{{__('KGS')}}</label>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-font"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="KGS" type="number" step="0.000001" name="kgs"
+                                            required>
+                                    </div>
+                                    @error('kgs')
+                                        <small class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label float-left">{{__('Price')}}</label>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-font"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Price" type="text" name="price"
+                                            id="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency"
+                                            required>
+                                    </div>
+                                    @error('price')
                                         <small class="text-danger" role="alert">
                                             {{ $message }}
                                         </small>

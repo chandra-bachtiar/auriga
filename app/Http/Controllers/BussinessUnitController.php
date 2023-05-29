@@ -50,7 +50,7 @@ class BussinessUnitController extends Controller
         if ($request->file('gambar')) {
             File::delete('img/business_unit/' . $bu->gambar);
             $file = $request->file('gambar');
-            $file_name = $bu->business_unit . time();
+            $file_name = str_replace(" ", "", $bu->business_unit).time();
             $destinationPath = public_path('img/business_unit');
             $imageFile = Image::make($file->getRealPath());
             $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);
@@ -106,7 +106,7 @@ class BussinessUnitController extends Controller
         if ($request->file('gambar')) {
             File::delete('img/business_unit/' . $bu->gambar);
             $file = $request->file('gambar');
-            $file_name = $bu->business_unit . time();
+            $file_name = str_replace(" ", "", $bu->business_unit).time();
             $destinationPath = public_path('img/business_unit');
             $imageFile = Image::make($file->getRealPath());
             $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);

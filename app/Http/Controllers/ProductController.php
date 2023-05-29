@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BussinessUnit;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $bu = BussinessUnit::all();
         $product = product::all();
-        return view('product.index', compact('product'));
+        return view('product.index', compact('product','bu'));
     }
 
     /**

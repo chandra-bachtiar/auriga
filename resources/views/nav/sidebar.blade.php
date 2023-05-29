@@ -62,7 +62,7 @@
                                     <a href="{{ route('business-unit.index') }}" class="nav-link">Business Unit</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Product</a>
+                                    <a href="{{ route('product.index') }}" class="nav-link">Product</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('users.index') }}" class="nav-link">User</a>

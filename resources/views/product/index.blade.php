@@ -44,7 +44,7 @@
                     @endif
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">{{ __('Business Unit') }}</h3>
+                        <h3 class="mb-0">{{ __('Product') }}</h3>
                     </div>
                     <div class="table-responsive py-2">
                         <table class="table table-flush" id="myTable">
@@ -98,13 +98,13 @@
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
-                                                data-toggle="modal" data-target="#sekolah-show-{{ $b->id }}">
+                                                data-toggle="modal" data-target="#sekolah-show-{{ $p->id }}">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
                                             @can('sekolah-edit')
-                                                <a href="{{ route('business-unit.edit', $b->id) }}"
+                                                <a href="{{ route('product.edit', $p->id) }}"
                                                     class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
                                                     data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
@@ -112,13 +112,13 @@
                                                 </a>
                                             @endcan
                                             @can('sekolah-delete')
-                                                <button onclick="deleteItem(this)" data-id="{{ $b->id }}"
+                                                <button onclick="deleteItem(this)" data-id="{{ $p->id }}"
                                                     class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
                                                     data-toggle="tooltip" data-placement="top" title="Remove">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             @endcan
-                                            @include('businessunit.modal.show')
+                                            @include('product.modal.show')
                                         </td>
                                     </tr>
                                 @endforeach
@@ -132,5 +132,5 @@
         @include('nav.footer')
     </div>
     </div>
-    @include('businessunit.remove_script')
+    @include('product.remove_script')
 @endsection
