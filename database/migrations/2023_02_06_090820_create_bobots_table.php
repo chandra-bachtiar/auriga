@@ -16,8 +16,8 @@ class CreateBobotsTable extends Migration
         Schema::create('bobots', function (Blueprint $table) {
             $table->increments('id');
             $table->string('jawaban')->unique();
-            $table->integer('nilai');
-            $table->integer('batasan');
+            $table->decimal('nilai', 15, 2);
+            $table->decimal('batasan', 15, 2);
             $table->string('hasil');
             $table->timestamps();
         });

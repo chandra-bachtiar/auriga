@@ -51,6 +51,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>
+                                    <th>Image</th>
                                     <th>Business Unit</th>
                                     <th>Item Number</th>
                                     <th>SKU DCH</th>
@@ -59,12 +60,13 @@
                                     <th>CBM</th>
                                     <th>KGS</th>
                                     <th>Price</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>{{ __('#') }}</th>
+                                    <th>Image</th>
                                     <th>Business Unit</th>
                                     <th>Item Number</th>
                                     <th>SKU DCH</th>
@@ -73,7 +75,7 @@
                                     <th>CBM</th>
                                     <th>KGS</th>
                                     <th>Price</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -87,6 +89,15 @@
                                 @foreach ($product as $p)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
+                                        <td style="vertical-align: middle">
+                                            @if (strlen($p->gambar) > 0)
+                                            <img src="{{ asset('img/product/' . $p->gambar) }}" width="80px"
+                                                class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                            @elseif($p->gambar == null)
+                                                <img src="{{ asset('img/profile/user-default.png') }}" width="80px"
+                                                    class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                            @endif
+                                        </td>
                                         <td style="vertical-align: middle">{{ $p->bu->business_unit }}</td>
                                         <td style="vertical-align: middle">{{ $p->item_number }}</td>
                                         <td style="vertical-align: middle">{{ $p->sku_dch }}</td>

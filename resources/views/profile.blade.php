@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card card-profile">
-                    <img src="{{ asset('img/profile/background-default.png') }}" alt="Image placeholder"
+                    <img src="{{ asset('img/profile/background-default.jpg') }}" alt="Image placeholder"
                         class="card-img-top" style="width: 100%; background-position:center;">
                     <div class="row justify-content-center">
                         <div class="col-lg-3 order-lg-2">

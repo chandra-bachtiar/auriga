@@ -14,6 +14,6 @@ class product extends Model
                             'item_name','uom','cbm','kgs','price'];
 
     public function bu(){
-        return $this->belongsTo(BussinessUnit::class, 'id', 'id');
+        return $this->belongsTo(BussinessUnit::class, 'business_unit_id', 'id');
     }
 }

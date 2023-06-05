@@ -1,4 +1,4 @@
-@section('title', '| Business Unit - Edit')
+@section('title', '| Product - Edit')
 @extends('layouts.main')
 @section('content')
     <!-- Header -->
@@ -13,9 +13,9 @@
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
                                 </li>
                                 <li class="breadcrumb-item"><a
-                                        href="{{ route('business-unit.index') }}">{{ __('Business Unit') }}</a>
+                                        href="{{ route('product.index') }}">{{ __('Product') }}</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Business Unit') }}</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Product') }}</li>
                             </ol>
                         </nav>
                     </div>
@@ -40,10 +40,10 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <form action="{{ route('business-unit.update', $bu->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                             @method('PATCH')
                             @csrf
-                            @include('businessunit.formEdit')
+                            @include('product.formEdit')
                         </form>
                     </div>
                 </div>

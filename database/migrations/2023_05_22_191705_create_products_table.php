@@ -21,9 +21,9 @@ class CreateProductsTable extends Migration
             $table->string('sku_dch');
             $table->text('item_name');
             $table->integer('uom');
-            $table->double('cbm');
-            $table->double('kgs');
-            $table->integer('price');
+            $table->decimal('cbm', 18, 9, true);
+            $table->decimal('kgs', 18, 9, true);
+            $table->double('price');
             $table->softDeletes();
             $table->timestamps();
         });

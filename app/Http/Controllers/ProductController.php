@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
+use Image;
 use App\Models\BussinessUnit;
 use App\Models\product;
 use Illuminate\Http\Request;
@@ -27,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.index');
     }
 
     /**
@@ -36,9 +38,33 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, product $product)
     {
-        //
+        $this->validate($request, [
+            'item_number' => 'required',
+            'business_unit_id' => 'required',
+            'sku_dch' => 'required',
+            'item_name' => 'required',
+            'uom' => 'required',
+            'cbm' => 'required',
+            'kgs' => 'required',
+            'price' => 'required',
+            'gambar' => 'mimes:jpeg,jpg,png,svg|max:2048'
+        ]);
+
+        $input = $request->all();
+        if ($request->file('gambar')) {
+            File::delete('img/product/' . $product->gambar);
+            $file = $request->file('gambar');
+            $file_name = str_replace(" ", "", $product->item_name).time();
+            $destinationPath = public_path('img/product');
+            $imageFile = Image::make($file->getRealPath());
+            $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);
+            $input['gambar'] = $file_name;
+        }
+        $product = product::create($input);
+        toast()->success('Data have been succesfully saved!');
+        return redirect('product');
     }
 
     /**
@@ -47,9 +73,10 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show($id)
     {
-        //
+        $product = product::find($id);
+        return view('product.show',compact('product'));
     }
 
     /**
@@ -58,9 +85,11 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(product $product)
+    public function edit($id)
     {
-        //
+        $bu = BussinessUnit::all();
+        $product = product::find($id);
+        return view('product.edit',compact('product','bu'));
     }
 
     /**
@@ -70,9 +99,33 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'item_number' => 'required',
+            'business_unit_id' => 'required',
+            'sku_dch' => 'required',
+            'item_name' => 'required',
+            'uom' => 'required',
+            'cbm' => 'required',
+            'kgs' => 'required',
+            'price' => 'required',
+            'gambar' => 'mimes:jpeg,jpg,png,svg|max:2048'
+        ]);
+
+        $product = product::find($id);
+        if ($request->file('gambar')) {
+            File::delete('img/product/' . $product->gambar);
+            $file = $request->file('gambar');
+            $file_name = str_replace(" ", "", $product->item_name).time();
+            $destinationPath = public_path('img/product');
+            $imageFile = Image::make($file->getRealPath());
+            $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);
+            $input['gambar'] = $file_name;
+        }
+        $product->update($input);
+        toast()->success('Product updated successfully');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -81,8 +134,15 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy($id)
     {
-        //
+        $product = product::find($id);
+        $product->delete();
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'title'   => 'Success',
+                    'message' => 'Your file has been moved to trash!'
+                ));
     }
 }

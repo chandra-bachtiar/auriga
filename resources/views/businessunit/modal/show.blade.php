@@ -14,6 +14,26 @@
                     <div class="card-body">
                         <img src="{{ asset('img/theme/img-1-1000x600.jpg') }}" alt="Image placeholder"
                             class="card-img-top">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3 order-lg-2">
+                                <div class="card-profile-image">
+                                    @if (isset($s->gambar))
+                                        <a href="#">
+                                            <img src="{{ asset('img/business_unit/' . $s->gambar) }}"
+                                                class="rounded-circle">
+                                        </a>
+                                    @else
+                                        <a href="#">
+                                            <img src="{{ asset('img/profile/team-1.jpg') }}" class="rounded-circle">
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                            <div class="d-flex justify-content-between">
+                            </div>
+                        </div>
                         <div class="card-body pt-0">
                             <div class="row mb--4">
                                 <div class="col">

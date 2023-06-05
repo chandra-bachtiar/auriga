@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label float-left">{{__('Business Unit')}}</label>
                                     <div class="input-group input-group-merge">
-                                        <select class="form-control" data-toggle="select" name="bussines_unit_id" required>
+                                        <select class="form-control" data-toggle="select" name="business_unit_id" required>
                                             <option value="" selected>{{__('Choose Business Unit')}}</option>
                                             @foreach ($bu as $k)
                                                 <option value="{{ $k->id }}">{{ $k->business_unit }}</option>
@@ -123,7 +123,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-font"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="CBM" type="number" step="0.000001" name="cbm"
+                                        <input class="form-control" placeholder="CBM" type="number" step="0.00000000001" name="cbm"
                                             required>
                                     </div>
                                     @error('cbm')
@@ -159,8 +159,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-font"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Price" type="text" name="price"
-                                            id="currency-field" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency"
+                                        <input class="form-control" placeholder="Price" type="number" name="price"
                                             required>
                                     </div>
                                     @error('price')
@@ -171,8 +170,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label float-left">{{__('Image')}}</label>
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-picture"></i></span>
+                                        </div>
+                                        <input type="file" class="form-control" name="gambar" required>
+                                    </div>
+                                    @error('gambar')
+                                        <small class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                         <div class="modal-footer">
-                            <button type="button" href="{{ route('business-unit.index') }}" class="btn btn-secondary"
+                            <button type="button" href="{{ route('product.index') }}" class="btn btn-secondary"
                                 data-dismiss="modal">{{ __('Close') }}</button>
                             <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                         </div>
