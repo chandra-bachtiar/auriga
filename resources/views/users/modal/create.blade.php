@@ -76,7 +76,7 @@
                         <input class="form-control" type="text" name="date_of_entry" hidden>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
@@ -87,23 +87,6 @@
                                             <option selected disabled>Select Role</option>
                                             @foreach ($roles as $role)
                                                 <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="input-group input-group-merge">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
-                                        </div>
-                                        <select class="form-control" name="departement_id" required>
-                                            <option selected disabled>Select Instansi</option>
-                                            @foreach ($departements as $departement)
-                                                <option value="{{ $departement->id }}">{{ $departement->name }}
-                                                </option>
                                             @endforeach
                                         </select>
                                     </div>

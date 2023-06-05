@@ -23,7 +23,6 @@
                             <th>{{ __('#') }}</th>
                             <th>Users</th>
                             <th>Created at</th>
-                            <th>Instansi Name</th>
                             <th style="text-align: center">Gender</th>
                             <th style="text-align: center">{{ __('Action') }}</th>
                         </tr>
@@ -33,7 +32,6 @@
                             <th>{{ __('#') }}</th>
                             <th>Users</th>
                             <th>Created at</th>
-                            <th>Instansi Name</th>
                             <th style="text-align: center">Gender</th>
                             <th style="text-align: center">{{ __('Action') }}</th>
                         </tr>
@@ -44,9 +42,6 @@
                                 <td style="vertical-align: middle">{{ $loop->iteration }}</td>
                                 <td style="vertical-align: middle">{{ $user->fullname }}</td>
                                 <td style="vertical-align: middle">{{ $user->created_at }}</td>
-                                <td style="vertical-align: middle">
-                                    <a href="#" class="font-weight-bold">{{ $user->departement->name }}</a>
-                                </td>
                                 <td style="vertical-align: middle" align="center">
 
                                     @if ($user->gender == 'Male')

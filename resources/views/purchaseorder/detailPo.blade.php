@@ -239,6 +239,11 @@
                         </tbody>
                       </table>
                     </div>
+                    <div class="col-lg-6 col-5">
+                      <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                          data-target=".bd-add-product">{{ __('Add Product') }}</button>
+                      @include('purchaseorder.modal.create')
+                  </div>
                   </div>
                   <div class="fieldset-footer">
                     <span>Step 3 of 3</span>

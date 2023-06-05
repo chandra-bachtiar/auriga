@@ -24,11 +24,9 @@ class UserSeeder extends Seeder
             'place_of_birth' => 'Sumenep',
             'gender' => 'Male',
             'address' => 'Sumenep',
-            'last_education' => 'S2',
             'date_of_entry' => '2021-08-18',
             'registration_number' => '01.092021.0001',
-            'phone' => '087850987679',
-            'departement_id' => '1'
+            'phone' => '087850987679'
 
         ]);
 
@@ -46,11 +44,9 @@ class UserSeeder extends Seeder
             'place_of_birth' => 'Sumenep',
             'gender' => 'Male',
             'address' => 'Sumenep',
-            'last_education' => 'D2',
             'date_of_entry' => '2021-08-18',
             'registration_number' => '02.092021.0001',
-            'phone' => '087702029102',
-            'departement_id' => '1'
+            'phone' => '087702029102'
 
         ]);
 
@@ -68,11 +64,9 @@ class UserSeeder extends Seeder
             'place_of_birth' => 'Sumenep',
             'gender' => 'Male',
             'address' => 'Sumenep',
-            'last_education' => 'D2',
             'date_of_entry' => '2021-08-18',
             'registration_number' => '03.092021.0001',
-            'phone' => '085548909856',
-            'departement_id' => '1'
+            'phone' => '085548909856'
         ]);
 
         $role = Role::create(['name' => 'user']);
@@ -89,11 +83,9 @@ class UserSeeder extends Seeder
             'place_of_birth' => 'Sumenep',
             'gender' => 'Male',
             'address' => 'Sumenep',
-            'last_education' => 'D2',
             'date_of_entry' => '2021-08-18',
             'registration_number' => '03.092021.0002',
-            'phone' => '085548909856',
-            'departement_id' => '2'
+            'phone' => '085548909856'
         ]);
 
         $user->assignRole('user');

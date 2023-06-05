@@ -7,13 +7,12 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">{{ __('User Management') }}</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">{{ __('Sales Management') }}</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">{{ __('User') }}</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">{{ __('User Management') }}</li>
+                                <li class="breadcrumb-item active" aria-current="page><a href="{{ route('roles.index') }}">{{ __('Sales') }}</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -36,7 +35,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">{{ __('User Management') }}</h3>
+                        <h3 class="mb-0">{{ __('Sales Management') }}</h3>
                     </div>
                     <div class="table-responsive py-2">
                         <table class="table table-flush" id="myTable">
@@ -45,7 +44,6 @@
                                     <th>{{ __('#') }}</th>
                                     <th>Users</th>
                                     <th>Created at</th>
-                                    <th>Instansi</th>
                                     <th style="text-align: center">Gender</th>
                                     <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
@@ -55,7 +53,6 @@
                                     <th>{{ __('#') }}</th>
                                     <th>Users</th>
                                     <th>Created at</th>
-                                    <th>Instansi</th>
                                     <th style="text-align: center">Gender</th>
                                     <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
@@ -66,9 +63,6 @@
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle">{{ $user->fullname }}</td>
                                         <td style="vertical-align: middle">{{ $user->created_at }}</td>
-                                        <td style="vertical-align: middle">
-                                            <a href="{{ route('departements.index') }}" class="font-weight-bold">{{ $user->departement->name }}</a>
-                                        </td>
                                         <td style="vertical-align: middle" align="center">
 
                                             @if ($user->gender == 'Male')

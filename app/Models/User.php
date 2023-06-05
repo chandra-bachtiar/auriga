@@ -20,7 +20,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id_on_machine',
         'username',
         'fullname',
         'email',
@@ -29,14 +28,10 @@ class User extends Authenticatable
         'place_of_birth',
         'gender',
         'address',
-        'last_education',
         'date_of_entry',
         'registration_number',
-        'nik',
-        'npwp',
         'phone',
-        'photo',
-        'departement_id'
+        'photo'
     ];
 
     protected $with = ['departement'];

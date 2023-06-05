@@ -58,7 +58,6 @@ class UserController extends Controller
             'password' => 'required|max:100',
             'fullname' => 'required|max:255',
             'email' => 'required|email|unique:users,email',
-            'departement_id' => 'required',
             'roles' => 'required'
         ]);
 
@@ -106,10 +105,8 @@ class UserController extends Controller
             'fullname' => 'required|max:255|min:8',
             'email' => 'required|email|unique:users,email,'.$id,
             'gender' => 'required',
-            'last_education' => 'required',
             'phone' => 'required',
             'photo' => 'mimes:jpeg,jpg,png,svg|max:2048',
-            'departement_id' => 'required',
             'roles' => 'required'
         ]);
 

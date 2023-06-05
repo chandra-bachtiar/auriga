@@ -5,7 +5,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">
-                        <h5 class="modal-title" style="text-align: start">{{ __('Show User') }}</h5>
+                        <h5 class="modal-title" style="text-align: start">{{ __('Sales Detail') }}</h5>
                         <button type="button" href="#" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,10 +76,10 @@
                                     <span class="description">{{ $user->email }}</span>
                                 </div>
                                 <div class="col-md-6" style="text-align: left">
-                                    <span class="heading">{{ __('Departement') }}</span>
+                                    <span class="heading">{{ __('Phone') }}</span>
                                     <br>
-                                    @if ($user->departement_id != null)
-                                        <span class="description">{{ $user->departement->name }}</span>
+                                    @if ($user->phone)
+                                        <span class="description">{{ $user->phone }}</span>
                                     @else
                                         <span class="description">{{ __('--') }}</span>
                                     @endif
@@ -125,26 +125,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="row mb--4">
-                                <div class="col-md-6" style="text-align: right">
-                                    <span class="heading">{{ __('Last Education') }}</span>
-                                    <br>
-                                    @if ($user->last_education != null)
-                                        <span class="description">{{ $user->last_education }}</span>
-                                    @else
-                                        <span class="description">{{ __('--') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6" style="text-align: left">
-                                    <span class="heading">{{ __('Phone') }}</span>
-                                    <br>
-                                    @if ($user->phone)
-                                        <span class="description">{{ $user->phone }}</span>
-                                    @else
-                                        <span class="description">{{ __('--') }}</span>
-                                    @endif
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
