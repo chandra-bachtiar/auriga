@@ -17,13 +17,11 @@
                             </ol>
                         </nav>
                     </div>
-                    @can('sekolah-create')
                         <div class="col-lg-6 col-5 text-right">
                             <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
                                 data-target=".bd-create-sekolah">{{ __('Add Product') }}</button>
                             @include('product.modal.create')
                         </div>
-                    @endcan
                 </div>
             </div>
         </div>
@@ -46,48 +44,78 @@
                     @endif
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">{{ __('Business Unit') }}</h3>
+                        <h3 class="mb-0">{{ __('Product') }}</h3>
                     </div>
                     <div class="table-responsive py-2">
                         <table class="table table-flush" id="myTable">
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>
-                                    <th>Agency Code</th>
+                                    <th>Image</th>
                                     <th>Business Unit</th>
-                                    <th>Brand Name</th>
-                                    <th>Company</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th>Item Number</th>
+                                    <th>SKU DCH</th>
+                                    <th>Item Name</th>
+                                    <th>UOM</th>
+                                    <th>CBM</th>
+                                    <th>KGS</th>
+                                    <th>Price</th>
+                                    <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>{{ __('#') }}</th>
-                                    <th>Agency Code</th>
+                                    <th>Image</th>
                                     <th>Business Unit</th>
-                                    <th>Brand Name</th>
-                                    <th>Company</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th>Item Number</th>
+                                    <th>SKU DCH</th>
+                                    <th>Item Name</th>
+                                    <th>UOM</th>
+                                    <th>CBM</th>
+                                    <th>KGS</th>
+                                    <th>Price</th>
+                                    <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($bu as $b)
+                                @php
+                                    function idr($p)
+                                    {
+                                        $result = 'Rp. ' . number_format($p, 2, ',', '.');
+                                        return $result;
+                                    }
+                                @endphp
+                                @foreach ($product as $p)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle">{{ $b->agency_code }}</td>
-                                        <td style="vertical-align: middle">{{ $b->business_unit }}</td>
-                                        <td style="vertical-align: middle">{{ $b->brand_name }}</td>
-                                        <td style="vertical-align: middle">{{ $b->company }}</td>
+                                        <td style="vertical-align: middle">
+                                            @if (strlen($p->gambar) > 0)
+                                            <img src="{{ asset('img/product/' . $p->gambar) }}" width="80px"
+                                                class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                            @elseif($p->gambar == null)
+                                                <img src="{{ asset('img/profile/user-default.png') }}" width="80px"
+                                                    class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                            @endif
+                                        </td>
+                                        <td style="vertical-align: middle">{{ $p->bu->business_unit }}</td>
+                                        <td style="vertical-align: middle">{{ $p->item_number }}</td>
+                                        <td style="vertical-align: middle">{{ $p->sku_dch }}</td>
+                                        <td style="vertical-align: middle">{{ $p->item_number }}</td>
+                                        <td style="vertical-align: middle">{{ $p->uom }}</td>
+                                        <td style="vertical-align: middle">{{ $p->cbm }}</td>
+                                        <td style="vertical-align: middle">{{ $p->kgs }}</td>
+                                        <td style="vertical-align: middle">{{ idr($p->price) }}</td>
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
-                                                data-toggle="modal" data-target="#sekolah-show-{{ $b->id }}">
+                                                data-toggle="modal" data-target="#sekolah-show-{{ $p->id }}">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
                                             @can('sekolah-edit')
-                                                <a href="{{ route('business-unit.edit', $b->id) }}"
+                                                <a href="{{ route('product.edit', $p->id) }}"
                                                     class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
                                                     data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
@@ -95,13 +123,13 @@
                                                 </a>
                                             @endcan
                                             @can('sekolah-delete')
-                                                <button onclick="deleteItem(this)" data-id="{{ $b->id }}"
+                                                <button onclick="deleteItem(this)" data-id="{{ $p->id }}"
                                                     class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
                                                     data-toggle="tooltip" data-placement="top" title="Remove">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             @endcan
-                                            @include('businessunit.modal.show')
+                                            @include('product.modal.show')
                                         </td>
                                     </tr>
                                 @endforeach
@@ -115,5 +143,5 @@
         @include('nav.footer')
     </div>
     </div>
-    @include('businessunit.remove_script')
+    @include('product.remove_script')
 @endsection

@@ -10,6 +10,10 @@ class product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['business_unit_id','item_number','sku_dch',
+    protected $fillable = ['gambar','business_unit_id','item_number','sku_dch',
                             'item_name','uom','cbm','kgs','price'];
+
+    public function bu(){
+        return $this->belongsTo(BussinessUnit::class, 'business_unit_id', 'id');
+    }
 }

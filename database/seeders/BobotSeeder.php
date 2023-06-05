@@ -35,11 +35,10 @@ class BobotSeeder extends Seeder
             ],
             [
                 'jawaban' => 'Tidak Pernah',
-                'nilai' => 1,
+                'nilai' => 0.096,
                 'batasan' => 10,
                 'hasil' => 'Sekolah Tidak Sadar Lalu Lintas'
             ],
-
         ];
 
         foreach ($bobots as $bobot) {

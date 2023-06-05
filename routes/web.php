@@ -25,7 +25,8 @@ use App\Http\Controllers\{
     PertanyaanController,
     SekolahController,
     SurveiController,
-    PoController
+    PoController,
+    ProductController
 };
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\BussinessUnit;
@@ -65,6 +66,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('trashs/departements/delete/{id?}',   [TrashController::class,'deleteDepartements'])->name('trashs.departements.delete');
     Route::resource('kategoris',                         KategoriController::class);
     Route::resource('po',                                PoController::class);
+    Route::resource('product',                           ProductController::class);
     Route::resource('business-unit',                     BussinessUnitController::class);
     Route::resource('pertanyaans',                       PertanyaanController::class);
     Route::resource('sekolahs',                          SekolahController::class);

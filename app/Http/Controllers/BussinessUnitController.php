@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BussinessUnit;
+use Image;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Testing\Fakes\BusFake;
 
 class BussinessUnitController extends Controller
 {
@@ -35,21 +36,27 @@ class BussinessUnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, BussinessUnit $bu)
     {
         $this->validate($request, [
             'agency_code' => 'required|max:255',
             'business_unit' => 'required|max:255',
             'brand_name' => 'required|max:255',
             'company' => 'required|max:255',
+            'gambar' => 'mimes:jpeg,jpg,png,svg|max:2048'
         ]);
 
-        BussinessUnit::create([
-            'agency_code' => $request->agency_code,
-            'business_unit' => $request->business_unit,
-            'brand_name' => $request->brand_name,
-            'company' => $request->company,
-        ]);
+        $input = $request->all();
+        if ($request->file('gambar')) {
+            File::delete('img/business_unit/' . $bu->gambar);
+            $file = $request->file('gambar');
+            $file_name = str_replace(" ", "", $bu->business_unit).time();
+            $destinationPath = public_path('img/business_unit');
+            $imageFile = Image::make($file->getRealPath());
+            $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);
+            $input['gambar'] = $file_name;
+        }
+        $bu = BussinessUnit::create($input);
         toast()->success('Data have been succesfully saved!');
         return redirect('business-unit');
     }
@@ -92,10 +99,19 @@ class BussinessUnitController extends Controller
             'business_unit' => 'required|max:255',
             'brand_name' => 'required|max:255',
             'company' => 'required|max:255',
+            'gambar' => 'mimes:jpeg,jpg,png,svg|max:2048'
         ]);
 
         $bu = BussinessUnit::find($id);
-        $input = $request->all();
+        if ($request->file('gambar')) {
+            File::delete('img/business_unit/' . $bu->gambar);
+            $file = $request->file('gambar');
+            $file_name = str_replace(" ", "", $bu->business_unit).time();
+            $destinationPath = public_path('img/business_unit');
+            $imageFile = Image::make($file->getRealPath());
+            $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);
+            $input['gambar'] = $file_name;
+        }
         $bu->update($input);
         toast()->success('Business Unit updated successfully');
         return redirect()->route('business-unit.index');
