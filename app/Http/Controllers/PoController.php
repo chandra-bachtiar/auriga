@@ -26,8 +26,8 @@ class PoController extends Controller
      */
     public function create()
     {
-        $product = product::all();
-        return view('purchaseorder.detailPo',compact('product'));
+        $bu = BussinessUnit::all();
+        return view('purchaseorder.indexPo',compact('bu'));
     }
 
     /**
