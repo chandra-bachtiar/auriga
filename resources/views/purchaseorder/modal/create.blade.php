@@ -26,6 +26,24 @@
                         @csrf
                         <!-- Input groups with icon -->
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                                        </div>
+                                        <select name="roles" class="form-control" aria-label="Default select example"
+                                            required>
+                                            <option selected disabled>Select Product</option>
+                                            @foreach ($product as $prod)
+                                                <option value="{{ $prod->item_name }}">{{ $prod->item_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-control-label float-left">{{__('Agency Code')}}</label>

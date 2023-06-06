@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\BussinessUnit;
 use App\Models\po;
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class PoController extends Controller
@@ -25,7 +26,8 @@ class PoController extends Controller
      */
     public function create()
     {
-        return view('purchaseorder.detailPo');
+        $product = product::all();
+        return view('purchaseorder.detailPo',compact('product'));
     }
 
     /**
