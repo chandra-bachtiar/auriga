@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\kategori;
 use App\Models\pertanyaan;
 use App\Models\User;
+use App\Models\product;
 use App\Models\Departement;
+use App\Models\BussinessUnit;
 use App\Models\sekolah;
 
 class TrashController extends Controller
@@ -20,12 +22,14 @@ class TrashController extends Controller
     public function index()
     {
             $kategori     = kategori::onlyTrashed()->count();
+            $business_unit     = BussinessUnit::onlyTrashed()->count();
             $pertanyaan        = pertanyaan::onlyTrashed()->count();
+            $product        = product::onlyTrashed()->count();
             $users        = User::onlyTrashed()->count();
             $departements = Departement::onlyTrashed()->count();
             $sekolah   = sekolah::onlyTrashed()->count();
             return view('trash.index', compact(
-                'kategori','pertanyaan','users','departements','sekolah'
+                'kategori','pertanyaan','users','departements','sekolah','business_unit','product'
             ));
     }
 
@@ -36,15 +40,15 @@ class TrashController extends Controller
             return view('trash.usersTrash', compact(
                 'users'
             ));
-        } elseif ($id == 'kategori'){
-            $kategori     = kategori::onlyTrashed()->get();
-            return view('trash.kategoriTrash', compact(
-                'kategori'
+        } elseif ($id == 'business_unit'){
+            $business_unit     = BussinessUnit::onlyTrashed()->get();
+            return view('trash.businessUnitTrash', compact(
+                'business_unit'
             ));
-        } elseif ($id == 'pertanyaan'){
-            $pertanyaan   = pertanyaan::onlyTrashed()->get();
-            return view('trash.pertanyaanTrash', compact(
-                'pertanyaan'
+        } elseif ($id == 'product'){
+            $product   = product::onlyTrashed()->get();
+            return view('trash.productTrash', compact(
+                'product'
             ));
         } elseif ($id == 'sekolah'){
             $sekolah    = sekolah::onlyTrashed()->get();
@@ -63,6 +67,125 @@ class TrashController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function restoreProduct($id = null)
+    {
+        $product = product::onlyTrashed();
+        if($product->count() == 0) {
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'message' => 'Trash is empty!'
+                ));
+        }
+
+        if ($id != null) {
+            $product->where('id', $id)->restore();
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'message' => 'Data has been succesfully restored'
+                ));
+        } else {
+            $product->restore();
+            return response()
+            ->json(array(
+                'success' => true,
+                'message' => 'All data has been succesfully restored'
+            ));
+        }
+    }
+
+    public function deleteProduct($id = null)
+    {
+        $product = product::onlyTrashed();
+        if($product->count() == 0){
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'title'   => 'Clear',
+                    'message' => 'Trash is empty!'
+                ));
+        }
+        if ($id != null) {
+            $product = $product->where('id', $id)->first();
+            $product->forceDelete();
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'title'   => 'Deleted',
+                    'message' => 'Data have been permananetly deleted!'
+            ));
+        } else {
+            $product->forceDelete();
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'title'   => 'Deleted',
+                    'message' => 'All data have been permananetly deleted!'
+            ));
+        }
+    }
+
+    public function restoreBusinessUnit($id = null)
+    {
+        $business_unit = BussinessUnit::onlyTrashed();
+        if($business_unit->count() == 0) {
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'message' => 'Trash is empty!'
+                ));
+        }
+
+        if ($id != null) {
+            $business_unit->where('id', $id)->restore();
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'message' => 'Data has been succesfully restored'
+                ));
+        } else {
+            $business_unit->restore();
+            return response()
+            ->json(array(
+                'success' => true,
+                'message' => 'All data has been succesfully restored'
+            ));
+        }
+    }
+
+    public function deleteBusinessUnit($id = null)
+    {
+        $business_unit = BussinessUnit::onlyTrashed();
+        if($business_unit->count() == 0){
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'title'   => 'Clear',
+                    'message' => 'Trash is empty!'
+                ));
+        }
+        if ($id != null) {
+            $business_unit = $business_unit->where('id', $id)->first();
+            $business_unit->forceDelete();
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'title'   => 'Deleted',
+                    'message' => 'Data have been permananetly deleted!'
+            ));
+        } else {
+            $business_unit->forceDelete();
+            return response()
+                ->json(array(
+                    'success' => true,
+                    'title'   => 'Deleted',
+                    'message' => 'All data have been permananetly deleted!'
+            ));
+        }
+    }
+
     public function restoreKategori($id = null)
     {
         $kategori = kategori::onlyTrashed();
@@ -90,6 +213,7 @@ class TrashController extends Controller
             ));
         }
     }
+
     public function deleteKategori($id = null)
     {
         $kategori = kategori::onlyTrashed();
