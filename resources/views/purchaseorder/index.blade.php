@@ -46,6 +46,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>
+                                    <th>Image</th>
                                     <th>Agency Code</th>
                                     <th>Business Unit</th>
                                     <th>Brand Name</th>
@@ -56,6 +57,7 @@
                             <tfoot>
                                 <tr>
                                     <th>{{ __('#') }}</th>
+                                    <th>Image</th>
                                     <th>Agency Code</th>
                                     <th>Business Unit</th>
                                     <th>Brand Name</th>
@@ -67,24 +69,30 @@
                                 @foreach ($bu as $b)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle">{{ $b->agency_code }}</td>
                                         <td style="vertical-align: middle">
                                             <div class="media align-items-center">
-                                                <a href="#" class="avatar rounded-circle mr-3">
-                                                  <img alt="Image placeholder" src="{{ asset('img/brand/image.png') }}">
-                                                </a>
-                                                <div class="media-body">
-                                                  <span class="name mb-0 text-sm">{{ $b->business_unit }}</span>
-                                                </div>
-                                              </div>
+                                                @if (strlen($b->gambar) > 0)
+                                                    <img src="{{ asset('img/business_unit/' . $b->gambar) }}"
+                                                        width="80px" class="mt-1"
+                                                        style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                                @elseif($b->gambar == null)
+                                                    <img src="{{ asset('img/brand/image.png') }}" width="80px"
+                                                        class="mt-1"
+                                                        style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                                @endif
+                                            </div>
                                         </td>
+                                        <td style="vertical-align: middle">{{ $b->agency_code }}</td>
+                                        <td style="vertical-align: middle">{{ $b->business_unit }}</td>
                                         <td style="vertical-align: middle">{{ $b->brand_name }}</td>
                                         <td style="vertical-align: middle">{{ $b->company }}</td>
                                         <td style="vertical-align: middle" align="center">
-                                            <a href="{{ route('po.create', $b->id) }}" class="btn btn-sm btn-icon btn-primary">
+                                            <a href="{{ route('po.create', $b->id) }}"
+                                                class="btn btn-sm btn-icon btn-primary">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
-                                                    title="Create Purchase Order"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Create Purchase Order
-                                                </span> 
+                                                    title="Create Purchase Order"><i
+                                                        class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Create Purchase Order
+                                                </span>
                                             </a>
                                             @include('businessunit.modal.show')
                                         </td>

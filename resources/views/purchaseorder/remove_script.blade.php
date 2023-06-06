@@ -35,7 +35,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'POST',
-                        url: "business-unit/" + id,
+                        url: "po/" + id,
                         data: {
                             "_token": "{{ csrf_token() }}",
                             "_method": 'DELETE',

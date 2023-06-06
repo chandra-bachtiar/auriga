@@ -14,7 +14,18 @@ class CreatePosTable extends Migration
     public function up()
     {
         Schema::create('pos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id_po');
+            $table->integer('id_bu');
+            $table->text('customer_name');
+            $table->text('address');
+            $table->string('phone');
+            $table->string('sales');
+            $table->char('approval')->nullable();
+            $table->date('date');
+            $table->json('order_type')->nullable();
+            $table->json('remarks')->nullable();
+            $table->double('grand_total')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
