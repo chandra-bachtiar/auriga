@@ -57,13 +57,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Kategori</h5>
-                            <input type="text" name="trash" value="kategori" hidden>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Business Unit</h5>
+                            <input type="text" name="trash" value="business_unit" hidden>
                             <span class="h2 font-weight-bold mb-0">
-                                @if ($kategori == 0)
+                                @if ($business_unit == 0)
                                 {{__('Empty')}}
                                 @else
-                                {{__($kategori)}} {{__('trash')}}
+                                {{__($business_unit)}} {{__('trash')}}
                                 @endif
                             </span>
                         </div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <a href="{{route('list.trashs', 'kategori')}}"><small class="text-nowrap text-primary font-weight-600">Go to trash</small></a>
+                            <a href="{{route('list.trashs', 'business_unit')}}"><small class="text-nowrap text-primary font-weight-600">Go to trash</small></a>
                         </div>
                     </div>
                 </div>
@@ -87,13 +87,13 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Pertanyaan</h5>
-                            <input type="text" name="trash" value="pertanyaan" hidden>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Product</h5>
+                            <input type="text" name="trash" value="product" hidden>
                             <span class="h2 font-weight-bold mb-0">
-                                @if ($pertanyaan == 0)
+                                @if ($product == 0)
                                 {{__('Empty')}}
                                 @else
-                                {{__($pertanyaan)}} {{__('trash')}}
+                                {{__($product)}} {{__('trash')}}
                                 @endif
                             </span>
                         </div>
@@ -105,68 +105,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <a href="{{route('list.trashs', 'pertanyaan')}}"><small class="text-nowrap text-primary font-weight-600">Go to trash</small></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6">
-            <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Departements</h5>
-                            <input type="text" name="trash" value="departements" hidden>
-                            <span class="h2 font-weight-bold mb-0">
-                                @if ($departements == 0)
-                                {{__('Empty')}}
-                                @else
-                                {{__($departements)}} {{__('trash')}}
-                                @endif
-                            </span>
-                        </div>
-                        <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                <i class="fas fa-trash"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <a href="{{route('list.trashs', 'departements')}}"><small class="text-nowrap text-primary font-weight-600">Go to trash</small></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-4 col-md-6">
-            <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Sekolah</h5>
-                            <input type="text" name="trash" value="sekolah" hidden>
-                            <span class="h2 font-weight-bold mb-0">
-                                @if ($sekolah == 0)
-                                {{__('Empty')}}
-                                @else
-                                {{__($sekolah)}} {{__('trash')}}
-                                @endif
-                            </span>
-                        </div>
-                        <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                <i class="fas fa-trash"></i>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <a href="{{route('list.trashs', 'sekolah')}}"><small class="text-nowrap text-primary font-weight-600">Go to trash</small></a>
+                            <a href="{{route('list.trashs', 'product')}}"><small class="text-nowrap text-primary font-weight-600">Go to trash</small></a>
                         </div>
                     </div>
                 </div>

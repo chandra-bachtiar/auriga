@@ -54,6 +54,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/users/reset/{id?}',                  [UserController::class, 'reset'])->name('users.reset');
     Route::resource('roles',                            RoleController::class);
     Route::get('trashs/{id}',                           [TrashController::class, 'listTrash'])->name('list.trashs');
+    Route::get('trashs/product/restore/{id?}',          [TrashController::class,'restoreProduct'])->name('trashs.product.restore');
+    Route::delete('trashs/product/delete/{id?}',        [TrashController::class,'deleteProduct'])->name('trashs.product.delete');
+    Route::get('trashs/business_unit/restore/{id?}',    [TrashController::class,'restoreBusinessUnit'])->name('trashs.business_unit.restore');
+    Route::delete('trashs/business_unit/delete/{id?}',  [TrashController::class,'deleteBusinessUnit'])->name('trashs.business_unit.delete');
     Route::get('trashs/kategori/restore/{id?}',         [TrashController::class,'restoreKategori'])->name('trashs.kategori.restore');
     Route::delete('trashs/kategori/delete/{id?}',       [TrashController::class,'deleteKategori'])->name('trashs.kategori.delete');
     Route::get('trashs/pertanyaan/restore/{id?}',       [TrashController::class,'restorePertanyaan'])->name('trashs.pertanyaan.restore');
