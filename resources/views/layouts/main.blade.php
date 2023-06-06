@@ -83,7 +83,7 @@
     <script src="{{ asset('js/demo.min.js') }}"></script>
     <script type="text/javascript" charset="utf8" src="{{ asset('vendor/DataTables/datatables.min.js') }}"></script>
     @yield('date-filter')
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
             minDate = new DateTime($('#min'), {
                 format: 'MMMM Do YYYY'
@@ -130,8 +130,8 @@
                 fixedHeader: true,
             });
         });
-    </script> --}}
-    <script type="text/javascript">
+    </script>
+    {{-- <script type="text/javascript">
         $(document).ready(function() {
 
             // Create date inputs
@@ -243,7 +243,7 @@
             table.buttons().container()
                 .appendTo('#myTable_wrapper .col-md-6:eq(0)');
         });
-    </script>
+    </script> --}}
     <script type="text/javascript">
         function visibility3() {
             var x = document.getElementById('create_password');

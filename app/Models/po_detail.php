@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class po extends Model
+class po_detail extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $guarded = ['id_po'];
-
+    protected $guarded = ['id_detail'];
 }

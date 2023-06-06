@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\Models\BussinessUnit;
 use App\Models\po;
+use App\Models\po_detail;
 use App\Models\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PoController extends Controller
 {
@@ -26,8 +28,10 @@ class PoController extends Controller
      */
     public function create()
     {
-        $bu = BussinessUnit::all();
-        return view('purchaseorder.indexPo',compact('bu'));
+        $auth = Auth::user()->fullname;
+        $product = product::all();
+        $PoDetail = po_detail::all();
+        return view('purchaseorder.detailPo',compact('product','auth','PoDetail'));
     }
 
     /**

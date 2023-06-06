@@ -59,7 +59,7 @@
                                     <th>UOM</th>
                                     <th>CBM</th>
                                     <th>KGS</th>
-                                    <th>Price</th>
+                                    <th style="width: 800px">Price</th>
                                     <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>

@@ -15,28 +15,24 @@
                 @endif
                 <!-- Card header -->
                 <div class="card-header">
-                    <h5 class="modal-title" style="text-align: start">{{ __('Create New Business Unit') }}</h5>
+                    <h5 class="modal-title" style="text-align: start">{{ __('Add Product to Purchase Order') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <!-- Card body -->
                 <div class="card-body">
-                    <form action="{{ route('business-unit.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('po.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!-- Input groups with icon -->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group input-group-merge">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
-                                        </div>
-                                        <select name="roles" class="form-control" aria-label="Default select example"
-                                            required>
-                                            <option selected disabled>Select Product</option>
-                                            @foreach ($product as $prod)
-                                                <option value="{{ $prod->item_name }}">{{ $prod->item_name }}</option>
+                                        <select class="form-control" data-toggle="select" name="item_number">
+                                            <option value="" selected>{{__('Choose Product')}}</option>
+                                            @foreach ($product as $k)
+                                                <option value="{{ $k->id }}">{{ $k->item_number }}</option>
                                             @endforeach
                                         </select>
                                     </div>
