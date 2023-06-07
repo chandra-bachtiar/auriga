@@ -31,7 +31,8 @@ class User extends Authenticatable
         'date_of_entry',
         'registration_number',
         'phone',
-        'photo'
+        'photo',
+        'business_unit_id'
     ];
 
     protected $with = ['departement'];
@@ -62,5 +63,10 @@ class User extends Authenticatable
 
     public function userRole(){
         return $this->belongsTo('Spatie\Permission\Models\Role', 'id', 'id');
+    }
+
+    public function bussiness_units()
+    {
+        return $this->hasMany(BussinessUnit::class);
     }
 }

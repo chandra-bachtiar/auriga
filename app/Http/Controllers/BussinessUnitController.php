@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BussinessUnit;
+use App\Models\User;
 use Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class BussinessUnitController extends Controller
      */
     public function index()
     {
+        $user = User::all();
         $bu = BussinessUnit::all();
-        return view('businessunit.index', compact('bu'));
+        return view('businessunit.index', compact('bu','user'));
     }
 
     /**
@@ -56,6 +58,10 @@ class BussinessUnitController extends Controller
             $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);
             $input['gambar'] = $file_name;
         }
+        // $input['user_id'] = $request->user_id; 
+        $userid = $input['user_id'];
+        $input['user_id'] = implode(', ', $userid);
+        // dd($input);
         $bu = BussinessUnit::create($input);
         toast()->success('Data have been succesfully saved!');
         return redirect('business-unit');

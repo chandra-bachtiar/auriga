@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\{
+    BussinessUnit,
     User,
     Departement,
     Task,
@@ -12,6 +13,7 @@ use App\Models\{
 use Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -31,16 +33,20 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if (auth()->user()->hasRole('admin')) {
-            $users = User::orderBy('id','DESC')->get();
+            $business = BussinessUnit::all();
+            $users = User::with('bussiness_units')->orderBy('id','DESC')->get();
             $roles = Role::all();
             $departements = Departement::all();
-            return view('users.index',compact('users', 'roles', 'departements'));
+            // dd($users);
+            return view('users.index',compact('users', 'roles', 'departements','business'));
         } else {
             $users = User::where('departement_id', auth()->user()->departement_id)->orderBy('id','DESC')->get();
             $roles = Role::all();
             $departements = Departement::all();
             return view('users.index',compact('users', 'roles', 'departements'));
         }
+
+        
 
 
     }
@@ -75,7 +81,6 @@ class UserController extends Controller
         $current_date = \Carbon\Carbon::now()->toDateTimeString();
         $input['registration_number'] = $regNumber;
         $input['date_of_entry'] = $current_date;
-
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 

@@ -29,8 +29,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group input-group-merge">
-                                        <select class="form-control" data-toggle="select" name="item_number">
-                                            <option value="" selected>{{__('Choose Product')}}</option>
+                                        <select class="form-control" data-toggle="select" multiple data-placeholder="Select multiple options" name="item_number">
                                             @foreach ($product as $k)
                                                 <option value="{{ $k->id }}">{{ $k->item_number }}</option>
                                             @endforeach

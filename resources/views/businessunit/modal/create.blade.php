@@ -114,6 +114,23 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label float-left">{{__('User Business')}}</label>
+                                    <div class="input-group input-group-merge">
+                                        <select class="form-control" data-toggle="select" multiple name="user_id[]">
+                                            @foreach ($user as $k)
+                                                <option value="{{ $k->id }}">{{ $k->fullname }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('user_id')
+                                        <small class="text-danger" role="alert">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" href="{{ route('business-unit.index') }}" class="btn btn-secondary"

@@ -45,6 +45,7 @@
                                     <th>Users</th>
                                     <th>Created at</th>
                                     <th style="text-align: center">Gender</th>
+                                    <th>Business Unit</th>
                                     <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
@@ -54,6 +55,7 @@
                                     <th>Users</th>
                                     <th>Created at</th>
                                     <th style="text-align: center">Gender</th>
+                                    <th>Business Unit</th>
                                     <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
                                 </tr>
                             </tfoot>
@@ -78,6 +80,15 @@
                                             @else
                                                 {{ __('--') }}
                                             @endif
+                                        </td>
+                                        <td style="vertical-align: middle">
+                                            @foreach($user->bussiness_units as $unit)
+                                        {{-- @php
+                                            $ex = explode(',',$unit->business_unit);
+                                            dd($ex);
+                                        @endphp --}}
+                                           <span class="badge badge-pill badge-primary">{{ $unit->business_unit }}</span>
+                                            @endforeach 
                                         </td>
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"

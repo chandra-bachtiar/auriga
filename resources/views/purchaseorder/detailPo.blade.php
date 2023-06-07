@@ -7,7 +7,7 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">{{ __('Master Data') }}</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">{{ __('Transaksi') }}</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
@@ -80,29 +80,29 @@
                                             <div class="form-group">
                                                 <label class="form-control-label">Remarks</label>
                                                 <div class="row" style="padding-left: 15px; padding-top: 10px;">
-                                                    <div class="custom-control custom-checkbox mb-3 col-sm-3">
+                                                    <div class="custom-control custom-radio mb-3 col-sm-3">
+                                                        <input class="custom-control-input" id="customCheck1"
+                                                            type="radio" name="remarks" value="E-SELLER">
+                                                        <label class="custom-control-label"
+                                                            for="customCheck1">E-SELLER</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio mb-3 col-sm-3">
+                                                        <input class="custom-control-input" id="customCheck2"
+                                                            type="radio" name="remarks" value="CONSIGN">
+                                                        <label class="custom-control-label"
+                                                            for="customCheck2">CONSIGN</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio mb-3 col-sm-3">
+                                                        <input class="custom-control-input" id="customCheck3"
+                                                            type="radio" name="remarks" value="E-COMM">
+                                                        <label class="custom-control-label"
+                                                            for="customCheck3">E-COMM</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio mb-3 col-sm-3">
                                                         <input class="custom-control-input" id="customCheck4"
-                                                            type="checkbox" name="remarks[]" value="E-SELLER">
+                                                            type="radio" name="remarks" value="MEDICAL">
                                                         <label class="custom-control-label"
-                                                            for="customCheck4">E-SELLER</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck5"
-                                                            type="checkbox" name="remarks[]" value="CONSIGN">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck5">CONSIGN</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck6"
-                                                            type="checkbox" name="remarks[]" value="E-COMM">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck6">E-COMM</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck7"
-                                                            type="checkbox" name="remarks[]" value="MEDICAL">
-                                                        <label class="custom-control-label"
-                                                            for="customCheck7">MEDICAL</label>
+                                                            for="customCheck4">MEDICAL</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,11 +131,11 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-control-label">Approval</label>
-                                                <div class="custom-control custom-checkbox mb-3"
+                                                <div class="custom-control custom-switch mb-3 ml-4"
                                                     style="padding-top: 10px;">
-                                                    <input class="custom-control-input" id="customCheck1" type="checkbox"
+                                                    <input class="custom-control-input" id="customCheck5" type="checkbox"
                                                         name="approval" value="1">
-                                                    <label class="custom-control-label" for="customCheck1">Approve</label>
+                                                    <label class="custom-control-label" for="customCheck5">Approve</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -150,17 +150,17 @@
                                             <div class="form-group">
                                                 <label class="form-control-label">Order Type</label>
                                                 <div class="row" style="padding-left: 15px; padding-top: 10px;">
-                                                    <div class="custom-control custom-checkbox mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck2"
-                                                            type="checkbox" name="order_type[]" value="Regular">
+                                                    <div class="custom-control custom-radio mb-3 col-sm-3">
+                                                        <input class="custom-control-input" id="customCheck6"
+                                                            type="radio" name="order_type" value="Regular">
                                                         <label class="custom-control-label"
-                                                            for="customCheck2">Regular</label>
+                                                            for="customCheck6">Regular</label>
                                                     </div>
-                                                    <div class="custom-control custom-checkbox mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck3"
-                                                            type="checkbox" name="order_type[]" value="Urgent">
+                                                    <div class="custom-control custom-radio mb-3 col-sm-3">
+                                                        <input class="custom-control-input" id="customCheck7"
+                                                            type="radio" name="order_type" value="Urgent">
                                                         <label class="custom-control-label"
-                                                            for="customCheck3">Urgent</label>
+                                                            for="customCheck7">Urgent</label>
                                                     </div>
                                                 </div>
                                             </div>
