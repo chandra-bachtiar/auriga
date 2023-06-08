@@ -82,13 +82,13 @@
                                             @endif
                                         </td>
                                         <td style="vertical-align: middle">
-                                            @foreach($user->bussiness_units as $unit)
-                                        {{-- @php
-                                            $ex = explode(',',$unit->business_unit);
-                                            dd($ex);
-                                        @endphp --}}
-                                           <span class="badge badge-pill badge-primary">{{ $unit->business_unit }}</span>
-                                            @endforeach 
+                                            @foreach ($user_bu as $bu)
+                                                @if ($user->id == $bu->user_id)
+                                                    <span class="badge badge-pill badge-primary">
+                                                        {{ $business->where('id',$bu->bussiness_unit_id)->pluck('business_unit')->first() }}
+                                                    </span>
+                                                @endif
+                                            @endforeach
                                         </td>
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#" class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"

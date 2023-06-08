@@ -93,6 +93,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label float-left">{{__('User Business')}}</label>
+                                <div class="input-group input-group-merge">
+                                    <select class="form-control" data-toggle="select" multiple name="bu_id[]">
+                                        @foreach ($business as $bu)
+                                            <option value="{{ $bu->id }}">{{ $bu->business_unit }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('bu_id')
+                                    <small class="text-danger" role="alert">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="modal-footer">
                             <button type="button" href="{{ route('users.index') }}" class="btn btn-secondary"
                                 data-dismiss="modal">{{ __('Close') }}</button>

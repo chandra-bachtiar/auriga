@@ -21,7 +21,6 @@ class CreateBussinessUnitsTable extends Migration
             $table->string('business_unit');
             $table->string('brand_name');
             $table->string('company');
-            $table->string('user_id');
             $table->softDeletes();
             $table->timestamps();
         });
