@@ -31,6 +31,7 @@ class PoController extends Controller
         $auth = Auth::user()->fullname;
         $product = product::all();
         $PoDetail = po_detail::all();
+        // dd($product);
         return view('purchaseorder.detailPo',compact('product','auth','PoDetail'));
     }
 
@@ -42,7 +43,7 @@ class PoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
