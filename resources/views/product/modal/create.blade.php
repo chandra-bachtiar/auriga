@@ -178,7 +178,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-picture"></i></span>
                                         </div>
-                                        <input type="file" class="form-control" name="gambar" required>
+                                        <input type="file" class="form-control" name="gambar">
                                     </div>
                                     @error('gambar')
                                         <small class="text-danger" role="alert">

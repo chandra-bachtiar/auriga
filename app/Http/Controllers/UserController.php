@@ -8,7 +8,8 @@ use App\Models\{
     User,
     Departement,
     Task,
-    Salary
+    Salary,
+    user_bu
 };
 use Image;
 use Illuminate\Http\Request;
@@ -34,11 +35,13 @@ class UserController extends Controller
     {
         if (auth()->user()->hasRole('admin')) {
             $business = BussinessUnit::all();
-            $users = User::with('bussiness_units')->orderBy('id','DESC')->get();
+            $users = User::get();
             $roles = Role::all();
             $departements = Departement::all();
+            $user_bu = user_bu::all();
+            // dd($business);
             // dd($users);
-            return view('users.index',compact('users', 'roles', 'departements','business'));
+            return view('users.index',compact('users', 'roles', 'departements','business','user_bu'));
         } else {
             $users = User::where('departement_id', auth()->user()->departement_id)->orderBy('id','DESC')->get();
             $roles = Role::all();
@@ -79,10 +82,22 @@ class UserController extends Controller
         }
 
         $current_date = \Carbon\Carbon::now()->toDateTimeString();
+        
         $input['registration_number'] = $regNumber;
         $input['date_of_entry'] = $current_date;
+        
+
+
+        // dd($input);
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
+
+        foreach($input['bu_id'] as $bu_id) {
+            $bu = user_bu::create([
+                'user_id' => $user->id,
+                'bussiness_unit_id' => $bu_id
+            ]);
+        }
 
         toast()->success('User created successfully');
         return redirect()->route('users.index');

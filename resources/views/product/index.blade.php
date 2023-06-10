@@ -12,16 +12,17 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('business-unit.index') }}">{{ __('Product') }}</a>
+                                <li class="breadcrumb-item"><a
+                                        href="{{ route('business-unit.index') }}">{{ __('Product') }}</a>
                                 </li>
                             </ol>
                         </nav>
                     </div>
-                        <div class="col-lg-6 col-5 text-right">
-                            <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
-                                data-target=".bd-create-sekolah">{{ __('Add Product') }}</button>
-                            @include('product.modal.create')
-                        </div>
+                    <div class="col-lg-6 col-5 text-right">
+                        <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
+                            data-target=".bd-create-sekolah">{{ __('Add Product') }}</button>
+                        @include('product.modal.create')
+                    </div>
                 </div>
             </div>
         </div>
@@ -91,8 +92,8 @@
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle">
                                             @if (strlen($p->gambar) > 0)
-                                            <img src="{{ asset('img/product/' . $p->gambar) }}" width="80px"
-                                                class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                                <img src="{{ asset('img/product/' . $p->gambar) }}" width="80px"
+                                                    class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
                                             @elseif($p->gambar == null)
                                                 <img src="{{ asset('img/profile/user-default.png') }}" width="80px"
                                                     class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">

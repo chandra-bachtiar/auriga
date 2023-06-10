@@ -81,26 +81,26 @@
                                                 <label class="form-control-label">Remarks</label>
                                                 <div class="row" style="padding-left: 15px; padding-top: 10px;">
                                                     <div class="custom-control custom-radio mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck1"
-                                                            type="radio" name="remarks" value="E-SELLER">
+                                                        <input class="custom-control-input" id="customCheck1" type="radio"
+                                                            name="remarks" value="E-SELLER">
                                                         <label class="custom-control-label"
                                                             for="customCheck1">E-SELLER</label>
                                                     </div>
                                                     <div class="custom-control custom-radio mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck2"
-                                                            type="radio" name="remarks" value="CONSIGN">
+                                                        <input class="custom-control-input" id="customCheck2" type="radio"
+                                                            name="remarks" value="CONSIGN">
                                                         <label class="custom-control-label"
                                                             for="customCheck2">CONSIGN</label>
                                                     </div>
                                                     <div class="custom-control custom-radio mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck3"
-                                                            type="radio" name="remarks" value="E-COMM">
+                                                        <input class="custom-control-input" id="customCheck3" type="radio"
+                                                            name="remarks" value="E-COMM">
                                                         <label class="custom-control-label"
                                                             for="customCheck3">E-COMM</label>
                                                     </div>
                                                     <div class="custom-control custom-radio mb-3 col-sm-3">
-                                                        <input class="custom-control-input" id="customCheck4"
-                                                            type="radio" name="remarks" value="MEDICAL">
+                                                        <input class="custom-control-input" id="customCheck4" type="radio"
+                                                            name="remarks" value="MEDICAL">
                                                         <label class="custom-control-label"
                                                             for="customCheck4">MEDICAL</label>
                                                     </div>
@@ -177,7 +177,8 @@
                             <fieldset>
                                 <div class="fieldset-content">
                                     <div class="table-responsive">
-                                        <table class="table align-items-center table-flush">
+                                        <table class="table align-items-center table-flush" id="table-product-po"
+                                            style="width: 100%">
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>No</th>
@@ -188,52 +189,89 @@
                                                     <th>Price/Pcs Exclude</th>
                                                     <th>Price/Pcs Include</th>
                                                     <th>QYT Pcs</th>
-                                                    <th>Disc</th>
+                                                    <th>Disc (%)</th>
                                                     <th>Value</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              @foreach ($PoDetail as $pd)
-                                                <tr>
-                                                    <td>
-                                                        <a class="text-muted">{{ $loop->iteration }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->number_item }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->sku_dch }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->item_name }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->uom }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->price_exclude }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->price_include }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->qty }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->disc }}</a>
-                                                    </td>
-                                                    <td>
-                                                        <a class="text-muted">{{ $pd->value }}</a>
-                                                    </td>
-                                                </tr>
+                                                @foreach ($PoDetail as $pd)
+                                                    <tr>
+                                                        <td>
+                                                            <a class="text-muted">{{ $loop->iteration }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->number_item }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->sku_dch }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->item_name }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->uom }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->price_exclude }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->price_include }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->qty }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->disc }}</a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="text-muted">{{ $pd->value }}</a>
+                                                        </td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="col-lg-6 col-5 mt-4">
-                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                            data-target=".bd-add-product">{{ __('Add Product') }}</button>
-                                        @include('purchaseorder.modal.create')
+                                    <div class="row">
+                                        <div class="col-lg-6 col-5 mt-4">
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                                data-target=".bd-add-product">{{ __('Add Product') }}</button>
+                                            @include('purchaseorder.modal.create')
+                                        </div>
+                                        <div class="col-lg-6 col-5 mt-4 text-right">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <h2>TOTAL</h2>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h2 id="text-total">Rp. 0</h2>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <h2>DISCOUNT</h2>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h2 id="text-discount">Rp. 0</h2>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <h2>TOTAL AFTER DISC</h2>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h2 id="text-after-disc">Rp. 0</h2>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <h2>PPN (11%)</h2>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h2 id="text-ppn">Rp. 0</h2>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <h1>GRAND TOTAL</h1>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h1 id="text-grand-total">Rp. 0</h1>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="fieldset-footer">
@@ -249,5 +287,162 @@
         @include('nav.footer')
     </div>
     </div>
+
     @include('purchaseorder.remove_script')
+@endsection
+
+@section('custom-script')
+    <script>
+        (function() {
+            let btnProduct = document.querySelectorAll('#btn-add-product');
+            btnProduct.forEach(el => {
+                el.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    let jsonData = JSON.parse(el.parentElement.getAttribute('data-json'));
+                    storeProductToTable(jsonData);
+                    //close modal
+                    $('#bd-add-product').modal('hide');
+                });
+            })
+
+            var tableProduct = $('#table-product-po').DataTable({
+                paging: false,
+                searching: false,
+                sorting: false,
+                info: false,
+            });
+
+            function storeProductToTable(json) {
+                let dataToAppend = [
+                    tableProduct.rows().count() + 1,
+                    json.item_number,
+                    json.sku_dch,
+                    json.item_name,
+                    json.uom,
+                    integerToRupiah(json.price),
+                    integerToRupiah(json.price * 1.11),
+                    '<input class="form-control qty-product" type="text" value="1" placeholder="QTY" type="text" name="qty_product">',
+                    '<input class="form-control disc-product no-spinner" type="number" step=".01" value="0" placeholder="Disc" type="text" name="disc_product">',
+                    integerToRupiah(json.price),
+                    '<button type="button" class="btn btn-sm btn-danger btn-remove-product" id="btn-remove-product"><i class="fas fa-trash"></i></button>'
+                ];
+
+                tableProduct.row.add(dataToAppend).draw();
+                addingChangeListener();
+                updateNominalData();
+            }
+
+            function addingChangeListener() {
+                const qtyProduct = document.querySelectorAll('.qty-product');
+                const discProduct = document.querySelectorAll('.disc-product');
+                const btnRemoveProduct = document.querySelectorAll('.btn-remove-product');
+                // loop with check if element have change event
+                qtyProduct.forEach(el => {
+                    el.addEventListener('change', function(event) {
+                        if (event.target.value < 1) {
+                            event.target.value = 1;
+                        }
+                        let row = el.closest('tr');
+                        let rowData = tableProduct.row(row).data();
+
+                        //updating row data
+                        let price = rupiahToInteger(rowData[5]);
+                        let qty = event.target.value;
+                        let disc = el.closest('tr').querySelector('.disc-product').value;
+                        rowData[7] = '<input class="form-control qty-product" type="text" value="' + qty + '" placeholder="QTY" type="text" name="qty_product">';
+                        rowData[8] = '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' + disc + '" placeholder="Disc" type="text" name="disc_product">';
+                        rowData[9] = integerToRupiah((price - (price * (disc / 100))) * qty);
+                        tableProduct.row(row).data(rowData).draw();
+                        addingChangeListener();
+                        updateNominalData();
+                    });
+                });
+
+                discProduct.forEach(el => {
+                    el.addEventListener('change', function(event) {
+                        if (event.target.value < 0) {
+                            event.target.value = 0;
+                        }
+
+                        if (event.target.value > 100) {
+                            event.target.value = 100;
+                        }
+
+                        let row = el.closest('tr');
+                        let rowData = tableProduct.row(row).data();
+                        
+
+                        //updating row data
+                        let price = rupiahToInteger(rowData[5]);
+                        let qty = el.closest('tr').querySelector('.qty-product').value;
+                        let disc = event.target.value;
+                        rowData[7] = '<input class="form-control qty-product" type="text" value="' + qty + '" placeholder="QTY" type="text" name="qty_product">';
+                        rowData[8] = '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' + disc + '" placeholder="Disc" type="text" name="disc_product">';
+                        rowData[9] = integerToRupiah((price - (price * (disc / 100))) * qty);
+                        tableProduct.row(row).data(rowData).draw();
+                        addingChangeListener();
+                        updateNominalData();
+                    });
+                });
+
+                btnRemoveProduct.forEach(el => {
+                    el.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        let row = el.closest('tr');
+                        tableProduct.row(row).remove().draw();
+                        addingChangeListener();
+                        updateNominalData();
+                    });
+                })
+            }
+
+            function updateNominalData() {
+                let tableData = tableProduct.data().toArray();
+                let total = 0;
+                let ppn = 0;
+                let grandTotal = 0;
+                let disc = 0;
+                let afterDisc = 0;
+                let elementDisc = document.querySelectorAll('.disc-product');
+                let elementQty = document.querySelectorAll('.qty-product');
+                tableData.forEach((el,index) => {
+                    total += rupiahToInteger(el[5]) * elementQty[index].value;
+                    disc += rupiahToInteger(el[5]) * elementQty[index].value - rupiahToInteger(el[9]);
+                });
+
+                afterDisc = total - disc;
+                ppn = afterDisc * 0.11;
+                grandTotal = afterDisc + ppn;
+
+                document.querySelector('#text-total').innerHTML = integerToRupiah(total);
+                document.querySelector('#text-discount').innerHTML = integerToRupiah(disc);
+                document.querySelector('#text-after-disc').innerHTML = integerToRupiah(afterDisc);
+                document.querySelector('#text-ppn').innerHTML = integerToRupiah(ppn);
+                document.querySelector('#text-grand-total').innerHTML = integerToRupiah(grandTotal);
+            }
+
+            function rupiahToInteger(rupiah) {
+                return parseInt(rupiah.split(',')[0].replace(/[^0-9]/g, '')) || 0;
+            }
+
+            function integerToRupiah(number) {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(number);
+            }
+
+            function storeProduct() {
+                const form = new FormData();
+                const tableData = tableProduct.data().toArray();
+                const elementDisc = document.querySelectorAll('.disc-product');
+                const elementQty = document.querySelectorAll('.qty-product');
+                const customerName = document.querySelector('#customerName').value;
+                const address = document.querySelector('#address').value;
+                const phone = document.querySelector('#phoneNumber').value;
+                //belum beres
+                
+            }
+        })();
+    </script>
 @endsection

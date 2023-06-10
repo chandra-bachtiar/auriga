@@ -32,6 +32,18 @@
         thead input {
             width: 100%;
         }
+
+        .no-spinner::-webkit-inner-spin-button,
+        .no-spinner::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .no-spinner {
+            appearance: textfield;
+            -moz-appearance: textfield;
+            /* Firefox */
+        }
     </style>
 
 </head>
@@ -129,6 +141,24 @@
                 orderCellsTop: true,
                 fixedHeader: true,
             });
+
+            var tableProduct = $('#table-product', function() {
+                $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-secondary');
+            }).DataTable({
+                dom: 'Bfrtip',
+                buttons: [],
+                lengthChange: true,
+                language: {
+                    paginate: {
+                        previous: "<i class='fas fa-angle-left'>",
+                        next: "<i class='fas fa-angle-right'>"
+                    }
+                },
+                orderCellsTop: true,
+                fixedHeader: true,
+            });
+
+
         });
     </script>
     {{-- <script type="text/javascript">
@@ -303,6 +333,8 @@
             return i;
         }
     </script>
+
+    @yield('custom-script')
 </body>
 
 </html>

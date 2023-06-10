@@ -58,9 +58,6 @@ class BussinessUnitController extends Controller
             $imageFile->resize(1200,1200)->save($destinationPath.'/'.$file_name);
             $input['gambar'] = $file_name;
         }
-        // $input['user_id'] = $request->user_id; 
-        $userid = $input['user_id'];
-        $input['user_id'] = implode(', ', $userid);
         // dd($input);
         $bu = BussinessUnit::create($input);
         toast()->success('Data have been succesfully saved!');
