@@ -87,7 +87,7 @@
                                         <td style="vertical-align: middle">{{ $b->brand_name }}</td>
                                         <td style="vertical-align: middle">{{ $b->company }}</td>
                                         <td style="vertical-align: middle" align="center">
-                                            <a href="{{ route('po.create', $b->id) }}"
+                                            <a href="{{ route('po.create', 'id='. $b->id) }}"
                                                 class="btn btn-sm btn-icon btn-primary">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
                                                     title="Create Purchase Order"><i
