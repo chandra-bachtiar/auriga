@@ -17,6 +17,10 @@
                             </ol>
                         </nav>
                     </div>
+                    <div class="col-lg-6 col-5 text-right">
+                        <a href="{{route('createPo')}}" class="btn btn-sm btn-neutral">{{ __('Create Purchase Order') }}</a>
+                        {{-- @include('kategori.modal.create') --}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,32 +68,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                @foreach ($bu as $b)
-                                    <tr>
-                                        <td style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle">{{ $b->agency_code }}</td>
-                                        <td style="vertical-align: middle">
-                                            <div class="media align-items-center">
-                                                <a href="#" class="avatar rounded-circle mr-3">
-                                                  <img alt="Image placeholder" src="{{ asset('img/brand/image.png') }}">
-                                                </a>
-                                                <div class="media-body">
-                                                  <span class="name mb-0 text-sm">{{ $b->business_unit }}</span>
-                                                </div>
-                                              </div>
-                                        </td>
-                                        <td style="vertical-align: middle">{{ $b->brand_name }}</td>
-                                        <td style="vertical-align: middle">{{ $b->company }}</td>
-                                        <td style="vertical-align: middle" align="center">
-                                            <a href="{{ route('po.create', $b->id) }}" class="btn btn-sm btn-icon btn-primary">
-                                                <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
-                                                    title="Create Purchase Order"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Create Purchase Order
-                                                </span> 
-                                            </a>
-                                            @include('businessunit.modal.show')
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               
                             </tbody>
                         </table>
                     </div>

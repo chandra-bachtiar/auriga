@@ -7,6 +7,7 @@ use App\Models\po_detail;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PoController extends Controller
 {
@@ -29,9 +30,15 @@ class PoController extends Controller
     public function create()
     {
         $auth = Auth::user()->fullname;
+        $po = po::all();
+        // dd($product);
+        return view('purchaseorder.indexPo',compact('po','auth'));
+    }
+
+    public function createPo(){
+        $auth = Auth::user()->fullname;
         $product = product::all();
         $PoDetail = po_detail::all();
-        // dd($product);
         return view('purchaseorder.detailPo',compact('product','auth','PoDetail'));
     }
 

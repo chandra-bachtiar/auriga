@@ -90,8 +90,8 @@
                                             <a href="{{ route('po.create', $b->id) }}"
                                                 class="btn btn-sm btn-icon btn-primary">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
-                                                    title="Create Purchase Order"><i
-                                                        class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Create Purchase Order
+                                                    title="List Purchase Order"><i
+                                                        class="fas fa-shopping-cart"></i>&nbsp;&nbsp;List Purchase Order
                                                 </span>
                                             </a>
                                             @include('businessunit.modal.show')

@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('trashs/departements/restore/{id?}',     [TrashController::class,'restoreDepartements'])->name('trashs.departements.restore');
     Route::delete('trashs/departements/delete/{id?}',   [TrashController::class,'deleteDepartements'])->name('trashs.departements.delete');
     Route::resource('kategoris',                         KategoriController::class);
+    Route::get('/createPo',                              [PoController::class,'createPo'])->name('createPo');
     Route::resource('po',                                PoController::class);
     Route::resource('product',                           ProductController::class);
     Route::resource('business-unit',                     BussinessUnitController::class);
