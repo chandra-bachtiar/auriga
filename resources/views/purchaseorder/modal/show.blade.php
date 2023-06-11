@@ -1,5 +1,5 @@
-@foreach ($bu as $s)
-    <div class="modal fade ModalShow" id="sekolah-show-{{ $s->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+@foreach ($po as $p)
+    <div class="modal fade ModalShow" id="sekolah-show-{{ $p->id }}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="card">
@@ -19,10 +19,10 @@
                                 <div class="col">
                                     <div class="card-profile-stats d-flex justify-content-center">
                                         <div>
-                                            <span class="heading">{{ $s->agency_code }}</span>
-                                            <span class="description float-center">Business Unit : {{ $s->business_unit }}</span><br>
-                                            <span class="description float-center">Brand Name : {{ $s->brand_name }}</span><br>
-                                            <span class="description float-center">Company : {{ $s->company }}</span>
+                                            <span class="heading">{{ $p->bu->business_unit }}</span>
+                                            <span class="description float-center">Business Unit : {{ $p->business_unit }}</span><br>
+                                            <span class="description float-center">Brand Name : {{ $p->brand_name }}</span><br>
+                                            <span class="description float-center">Company : {{ $p->company }}</span>
                                         </div>
                                     </div>
                                 </div>

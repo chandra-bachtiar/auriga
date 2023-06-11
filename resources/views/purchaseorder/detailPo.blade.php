@@ -551,7 +551,7 @@
                                 confirmButtonText: 'Ok'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = "{{ route('po.index') }}";
+                                    window.location.href = "{{ route('po.create') }}";
                                 }
                             })
                         } else {

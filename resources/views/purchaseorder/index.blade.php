@@ -1,4 +1,4 @@
-@section('title', '| Purchase Order')
+@section('title', '| Create Purchase Order')
 @extends('layouts.main')
 @section('content')
     <!-- Header -->
@@ -12,7 +12,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('po.index') }}">{{ __('Purchase Order') }}</a>
+                                <li class="breadcrumb-item"><a href="{{ route('po.index') }}">{{ __('Create Purchase Order') }}</a>
                                 </li>
                             </ol>
                         </nav>
@@ -87,11 +87,11 @@
                                         <td style="vertical-align: middle">{{ $b->brand_name }}</td>
                                         <td style="vertical-align: middle">{{ $b->company }}</td>
                                         <td style="vertical-align: middle" align="center">
-                                            <a href="{{ route('po.create', 'id='. $b->id) }}"
+                                            <a href="{{ route('createPo', 'id='. $b->id) }}"
                                                 class="btn btn-sm btn-icon btn-primary">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
                                                     title="List Purchase Order"><i
-                                                        class="fas fa-shopping-cart"></i>&nbsp;&nbsp;List Purchase Order
+                                                        class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Create Purchase Order
                                                 </span>
                                             </a>
                                             @include('businessunit.modal.show')

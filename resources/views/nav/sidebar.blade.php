@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('po.index') }}">
+                        <a class="nav-link" href="{{ route('po.create') }}">
                             <i class="fa fa-shopping-cart text-purple"></i>
                             <span class="nav-link-text">Create Purchase Order</span>
                         </a>

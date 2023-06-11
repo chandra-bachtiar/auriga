@@ -16,6 +16,7 @@ class CreatePosTable extends Migration
         Schema::create('pos', function (Blueprint $table) {
             $table->bigIncrements('id_po');
             $table->integer('id_bu');
+            $table->string('no_order');
             $table->text('customer_name');
             $table->text('address');
             $table->string('phone');
