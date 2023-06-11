@@ -22,7 +22,9 @@ use App\Models\{
     Presence,
     sekolah,
     survei,
-    BussinessUnit
+    BussinessUnit,
+    product,
+    po
 };
 use Spatie\Permission\Models\Role;
 use Image;
@@ -62,12 +64,14 @@ class HomeController extends Controller
         $bobot = bobot::count();
         $users = User::count();
         $bisnis_unit = BussinessUnit::count();
+        $product = product::count();
+        $po = po::count();
         $auth = auth()->user();
-        $checkProfil = $auth->date_of_birth == null || $auth->place_of_birth == null || $auth->gender == null || $auth->address == null || $auth->last_education == null || $auth->phone == null;
+        $checkProfil = $auth->date_of_birth == null || $auth->place_of_birth == null || $auth->gender == null || $auth->address == null || $auth->phone == null;
 
         if ($auth->hasRole('admin')) {
             return view('home', compact(
-            'response','kategori','users','pertanyaan','sekolah','checkProfil','bisnis_unit'
+            'response','kategori','users','pertanyaan','sekolah','checkProfil','bisnis_unit', 'po', 'product'
             ));
 
         } else if ($auth->hasRole('supervisor')){

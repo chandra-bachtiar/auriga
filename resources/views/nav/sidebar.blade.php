@@ -36,10 +36,6 @@
                             </a>
                             <div class="collapse" id="navbar-user">
                                 <ul class="nav nav-sm flex-column">
-
-                                    <li class="nav-item">
-                                        <a href="{{ route('users.index') }}" class="nav-link">User Management</a>
-                                    </li>
                                     @can('role-list')
                                         <li class="nav-item">
                                             <a href="{{ route('roles.index') }}" class="nav-link">Role & Permission</a>
