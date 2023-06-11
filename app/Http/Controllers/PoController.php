@@ -8,6 +8,7 @@ use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PoController extends Controller
 {
@@ -30,16 +31,14 @@ class PoController extends Controller
     public function create()
     {
         $auth = Auth::user()->fullname;
-        $po = po::all();
+        $po = po::join('po_details','po_details.id_po','=','pos.id_po')->get();
         return view('purchaseorder.indexPo',compact('po','auth'));
     }
 
     public function createPo(){
         $auth = Auth::user()->fullname;
         $product = product::all();
-        $PoDetail = po_detail::join('pos','pos.id_po','=','po_details.id_po');
-        dd($PoDetail);
-        return view('purchaseorder.detailPo',compact('product','auth','PoDetail'));
+        return view('purchaseorder.detailPo',compact('product','auth'));
     }
 
     /**
@@ -59,8 +58,11 @@ class PoController extends Controller
             'date' => 'required',
         ]);
 
+        $generatecode = "PO" . Str::upper(Str::random(6));
+
         $po = po::create([
             'id_bu' => $request->id_bu,
+            'no_order' => $generatecode,
             'customer_name' => $request->customer_name,
             'address' => $request->address,
             'phone' => $request->phone,

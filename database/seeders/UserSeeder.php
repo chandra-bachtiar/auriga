@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'username' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345678'),
-            'fullname' => 'Admin SSL',
+            'fullname' => 'Admin Auriga',
             'date_of_birth' => '2000-08-17',
             'place_of_birth' => 'Sumenep',
             'gender' => 'Male',

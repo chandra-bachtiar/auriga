@@ -60,8 +60,8 @@
                                     <th>UOM</th>
                                     <th>CBM</th>
                                     <th>KGS</th>
-                                    <th style="width: 800px">Price</th>
-                                    <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 200px">Price</th>
+                                    <th style="text-align: center; width: 300px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -75,8 +75,8 @@
                                     <th>UOM</th>
                                     <th>CBM</th>
                                     <th>KGS</th>
-                                    <th>Price</th>
-                                    <th style="text-align: center; width: 200px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 200px">Price</th>
+                                    <th style="text-align: center; width: 300px">{{ __('Action') }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -106,7 +106,7 @@
                                         <td style="vertical-align: middle">{{ $p->uom }}</td>
                                         <td style="vertical-align: middle">{{ $p->cbm }}</td>
                                         <td style="vertical-align: middle">{{ $p->kgs }}</td>
-                                        <td style="vertical-align: middle">{{ idr($p->price) }}</td>
+                                        <td style="vertical-align: middle; text-align: center; width: 200px">{{ idr($p->price) }}</td>
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
@@ -115,21 +115,17 @@
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
-                                            @can('sekolah-edit')
-                                                <a href="{{ route('product.edit', $p->id) }}"
-                                                    class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
-                                                    </span>
-                                                </a>
-                                            @endcan
-                                            @can('sekolah-delete')
-                                                <button onclick="deleteItem(this)" data-id="{{ $p->id }}"
-                                                    class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
-                                                    data-toggle="tooltip" data-placement="top" title="Remove">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            @endcan
+                                            <a href="{{ route('product.edit', $p->id) }}"
+                                                class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
+                                                data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
+                                                </span>
+                                            </a>
+                                            <button onclick="deleteItem(this)" data-id="{{ $p->id }}"
+                                                class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
+                                                data-toggle="tooltip" data-placement="top" title="Remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
                                             @include('product.modal.show')
                                         </td>
                                     </tr>
