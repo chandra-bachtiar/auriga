@@ -22,8 +22,13 @@ class CreatePosTable extends Migration
             $table->string('sales');
             $table->char('approval')->nullable();
             $table->date('date');
-            $table->json('order_type')->nullable();
-            $table->json('remarks')->nullable();
+            
+            // Kenapa json ini ?
+            // $table->json('order_type')->nullable();
+            // $table->json('remarks')->nullable();
+
+            $table->text('order_type')->nullable();
+            $table->text('remarks')->nullable();
             $table->double('grand_total')->nullable();
             $table->softDeletes();
             $table->timestamps();

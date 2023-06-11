@@ -46,7 +46,7 @@
                     </div>
                     <!-- Light table -->
                     <div class="card-body">
-                        <form action="{{ route('po.store') }}" method="POST" id="signup-form" class="needs-validation"
+                        <form onsubmit="alert('stop submit'); return false;" id="signup-form" class="needs-validation"
                             enctype="multipart/form-data">
                             @csrf
                             <h3>
@@ -133,9 +133,9 @@
                                                 <label class="form-control-label">Approval</label>
                                                 <div class="custom-control custom-switch mb-3 ml-4"
                                                     style="padding-top: 10px;">
-                                                    <input class="custom-control-input" id="customCheck5" type="checkbox"
+                                                    <input class="custom-control-input" id="approval" type="checkbox"
                                                         name="approval" value="1">
-                                                    <label class="custom-control-label" for="customCheck5">Approve</label>
+                                                    <label class="custom-control-label" for="approval">Approve</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,7 +194,7 @@
                                                     <th></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            {{-- <tbody>
                                                 @foreach ($PoDetail as $pd)
                                                     <tr>
                                                         <td>
@@ -229,7 +229,7 @@
                                                         </td>
                                                     </tr>
                                                 @endforeach
-                                            </tbody>
+                                            </tbody> --}}
                                         </table>
                                     </div>
                                     <div class="row">
@@ -294,6 +294,7 @@
 @section('custom-script')
     <script>
         (function() {
+            // custom script
             let btnProduct = document.querySelectorAll('#btn-add-product');
             btnProduct.forEach(el => {
                 el.addEventListener('click', function(event) {
@@ -304,6 +305,11 @@
                     $('#bd-add-product').modal('hide');
                 });
             })
+
+            document.querySelector('a[href="#finish"]').addEventListener('click', function(event) {
+                console.clear();
+                storeProduct();
+            });
 
             var tableProduct = $('#table-product-po').DataTable({
                 paging: false,
@@ -349,8 +355,11 @@
                         let price = rupiahToInteger(rowData[5]);
                         let qty = event.target.value;
                         let disc = el.closest('tr').querySelector('.disc-product').value;
-                        rowData[7] = '<input class="form-control qty-product" type="text" value="' + qty + '" placeholder="QTY" type="text" name="qty_product">';
-                        rowData[8] = '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' + disc + '" placeholder="Disc" type="text" name="disc_product">';
+                        rowData[7] = '<input class="form-control qty-product" type="text" value="' +
+                            qty + '" placeholder="QTY" type="text" name="qty_product">';
+                        rowData[8] =
+                            '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' +
+                            disc + '" placeholder="Disc" type="text" name="disc_product">';
                         rowData[9] = integerToRupiah((price - (price * (disc / 100))) * qty);
                         tableProduct.row(row).data(rowData).draw();
                         addingChangeListener();
@@ -370,14 +379,17 @@
 
                         let row = el.closest('tr');
                         let rowData = tableProduct.row(row).data();
-                        
+
 
                         //updating row data
                         let price = rupiahToInteger(rowData[5]);
                         let qty = el.closest('tr').querySelector('.qty-product').value;
                         let disc = event.target.value;
-                        rowData[7] = '<input class="form-control qty-product" type="text" value="' + qty + '" placeholder="QTY" type="text" name="qty_product">';
-                        rowData[8] = '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' + disc + '" placeholder="Disc" type="text" name="disc_product">';
+                        rowData[7] = '<input class="form-control qty-product" type="text" value="' +
+                            qty + '" placeholder="QTY" type="text" name="qty_product">';
+                        rowData[8] =
+                            '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' +
+                            disc + '" placeholder="Disc" type="text" name="disc_product">';
                         rowData[9] = integerToRupiah((price - (price * (disc / 100))) * qty);
                         tableProduct.row(row).data(rowData).draw();
                         addingChangeListener();
@@ -405,7 +417,7 @@
                 let afterDisc = 0;
                 let elementDisc = document.querySelectorAll('.disc-product');
                 let elementQty = document.querySelectorAll('.qty-product');
-                tableData.forEach((el,index) => {
+                tableData.forEach((el, index) => {
                     total += rupiahToInteger(el[5]) * elementQty[index].value;
                     disc += rupiahToInteger(el[5]) * elementQty[index].value - rupiahToInteger(el[9]);
                 });
@@ -440,8 +452,126 @@
                 const customerName = document.querySelector('#customerName').value;
                 const address = document.querySelector('#address').value;
                 const phone = document.querySelector('#phoneNumber').value;
-                //belum beres
+                const remaks = document.querySelector('input[name="remarks"]:checked')?.value || null;
+                const dateOrder = document.querySelector('#dateOrder').value;
+                const approval = document.querySelector('#approval').checked;
+                const orderType = document.querySelector('input[name="order_type"]:checked')?.value || null;
+
+                //validate
+                if (tableData.length < 1) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please add product!',
+                    })
+                    return;
+                }
+
+                if (customerName == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please fill customer name!',
+                    })
+                    return;
+                }
+
+                if (address == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please fill address!',
+                    })
+                    return;
+                }
+
+                if (phone == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please fill phone number!',
+                    })
+                    return;
+                }
+
+                if (dateOrder == '') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please fill date order!',
+                    })
+                    return;
+                }
+
+                //append id from url
+                const idBu = new URLSearchParams(window.location.search).get('id');
+                form.append('id_bu', idBu);
+                form.append('sales','{{ $auth }}');
+                form.append('customer_name', customerName);
+                form.append('address', address);
+                form.append('phone', phone);
+                form.append('remarks', remaks);
+                form.append('date', dateOrder);
+                form.append('approval', approval);
+                form.append('order_type', orderType);
+                form.append('grand_total', rupiahToInteger(document.querySelector('#text-grand-total').innerHTML));
                 
+                //csrf
+                form.append('_token', '{{ csrf_token() }}');
+
+                tableData.forEach((el, index) => {
+                    form.append('qty[]', elementQty[index].value);
+                    form.append('disc[]', elementDisc[index].value);
+                    form.append('number_item[]', el[1]);
+                    form.append('sku_dch[]', el[2]);
+                    form.append('item_name[]', el[3]);
+                    form.append('uom[]', el[4]);
+                    form.append('price_exclude[]', rupiahToInteger(el[5]));
+                    form.append('price_include[]', rupiahToInteger(el[6]));
+                    form.append('value[]', rupiahToInteger(el[9]));
+                });
+
+                //console log form data
+                // for (var pair of form.entries()) {
+                //     console.log(pair[0] + ', ' + pair[1]);
+                // }
+
+                $.ajax({
+                    url: "{{ route('po.store') }}",
+                    method: "POST",
+                    data: form,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        if (data.status == 'success') {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: data.message,
+                                icon: 'success',
+                                confirmButtonText: 'Ok'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('po.index') }}";
+                                }
+                            })
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            })
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: xhr.responseText,
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+                    }
+                });
             }
         })();
     </script>
