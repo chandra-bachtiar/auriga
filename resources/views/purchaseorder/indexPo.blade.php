@@ -81,8 +81,11 @@
                                         $result = 'Rp. ' . number_format($p, 2, ',', '.');
                                         return $result;
                                     }
+                                    $pofilter = $pov
+                                        ->where('sales', Auth::user()->fullname)
+                                        ->groupBy('no_order');
                                 @endphp
-                                @foreach ($po_all as $p)
+                                @foreach ($pov as $p)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle">{{ $p->no_order }}</td>
@@ -108,7 +111,8 @@
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle mdl-detail"
-                                                data-toggle="modal" data-id="{{$p->id_po}}" data-target="#sekolah-show-{{ $p->id }}">
+                                                data-toggle="modal" data-id="{{ $p->id_po }}"
+                                                data-target="#sekolah-show-{{ $p->id_po }}">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>

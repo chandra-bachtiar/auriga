@@ -17,14 +17,14 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
-                                    @if (isset($s->gambar))
+                                    @if (strlen($s->gambar) > 0)
                                         <a href="#">
                                             <img src="{{ asset('img/business_unit/' . $s->gambar) }}"
                                                 class="rounded-circle">
                                         </a>
-                                    @else
+                                    @elseif($s->gambar == null)
                                         <a href="#">
-                                            <img src="{{ asset('img/profile/team-1.jpg') }}" class="rounded-circle">
+                                            <img src="{{ asset('img/brand/image.png') }}" class="rounded-circle">
                                         </a>
                                     @endif
                                 </div>
@@ -40,8 +40,10 @@
                                     <div class="card-profile-stats d-flex justify-content-center">
                                         <div>
                                             <span class="heading">{{ $s->agency_code }}</span>
-                                            <span class="description float-center">Business Unit : {{ $s->business_unit }}</span><br>
-                                            <span class="description float-center">Brand Name : {{ $s->brand_name }}</span><br>
+                                            <span class="description float-center">Business Unit :
+                                                {{ $s->business_unit }}</span><br>
+                                            <span class="description float-center">Brand Name :
+                                                {{ $s->brand_name }}</span><br>
                                             <span class="description float-center">Company : {{ $s->company }}</span>
                                         </div>
                                     </div>
@@ -53,5 +55,4 @@
             </div>
         </div>
     </div>
-
 @endforeach

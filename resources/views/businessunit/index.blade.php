@@ -12,16 +12,17 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{ route('business-unit.index') }}">{{ __('Business Unit') }}</a>
+                                <li class="breadcrumb-item"><a
+                                        href="{{ route('business-unit.index') }}">{{ __('Business Unit') }}</a>
                                 </li>
                             </ol>
                         </nav>
                     </div>
-                        <div class="col-lg-6 col-5 text-right">
-                            <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
-                                data-target=".bd-create-sekolah">{{ __('Add Bussiness Unit') }}</button>
-                            @include('businessunit.modal.create')
-                        </div>
+                    <div class="col-lg-6 col-5 text-right">
+                        <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
+                            data-target=".bd-create-sekolah">{{ __('Add Bussiness Unit') }}</button>
+                        @include('businessunit.modal.create')
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,8 +80,8 @@
                                                 <img src="{{ asset('img/business_unit/' . $b->gambar) }}" width="80px"
                                                     class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
                                             @elseif($b->gambar == null)
-                                                <img src="{{ asset('img/brand/image.png') }}" width="80px"
-                                                    class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
+                                                <img src="{{ asset('img/brand/image.png') }}" width="80px" class="mt-1"
+                                                    style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
                                             @endif
                                         </td>
                                         <td style="vertical-align: middle">{{ $b->agency_code }}</td>
@@ -95,21 +96,17 @@
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
-                                            @can('sekolah-edit')
-                                                <a href="{{ route('business-unit.edit', $b->id) }}"
-                                                    class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
-                                                    data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
-                                                    </span>
-                                                </a>
-                                            @endcan
-                                            @can('sekolah-delete')
-                                                <button onclick="deleteItem(this)" data-id="{{ $b->id }}"
-                                                    class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
-                                                    data-toggle="tooltip" data-placement="top" title="Remove">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            @endcan
+                                            <a href="{{ route('business-unit.edit', $b->id) }}"
+                                                class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
+                                                data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
+                                                </span>
+                                            </a>
+                                            <button onclick="deleteItem(this)" data-id="{{ $b->id }}"
+                                                class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
+                                                data-toggle="tooltip" data-placement="top" title="Remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
                                             @include('businessunit.modal.show')
                                         </td>
                                     </tr>

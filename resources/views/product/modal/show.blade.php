@@ -17,14 +17,14 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
-                                    @if (isset($p->gambar))
+                                    @if (strlen($p->gambar) > 0)
                                         <a href="#">
-                                            <img src="{{ asset('img/product/' . $p->gambar) }}"
+                                            <img src="{{ asset('img/business_unit/' . $s->gambar) }}"
                                                 class="rounded-circle">
                                         </a>
-                                    @else
+                                    @elseif($p->gambar == null)
                                         <a href="#">
-                                            <img src="{{ asset('img/profile/team-1.jpg') }}" class="rounded-circle">
+                                            <img src="{{ asset('img/brand/image.png') }}" class="rounded-circle">
                                         </a>
                                     @endif
                                 </div>
