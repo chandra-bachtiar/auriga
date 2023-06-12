@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\PoExport;
+use App\Imports\PoImport;
+use App\Mail\PoMail;
 use App\Models\BussinessUnit;
 use App\Models\po;
 use App\Models\po_detail;
@@ -8,7 +12,9 @@ use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PoController extends Controller
 {
@@ -67,6 +73,7 @@ class PoController extends Controller
             'address' => $request->address,
             'phone' => $request->phone,
             'sales' => $request->sales,
+            // 'file' => Excel::download(new PoExport, 'Purchase_Order.xlsx'),
             'remarks' => $request->remarks,
             'date' => $request->date,
             'order_type' => $request->order_type,
@@ -89,6 +96,7 @@ class PoController extends Controller
             ]);
         }
 
+        // Mail::to('hidayatarif690@gmail.com')->send(new PoMail($po));
         //return status success dan status code 
         return response()->json([
             'status' => 'success',

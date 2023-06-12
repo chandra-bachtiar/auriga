@@ -175,7 +175,7 @@
                                 <span class="title_text">Items Purchase Orders</span>
                             </h3>
                             <fieldset>
-                                <div class="fieldset-content">
+                                <div class="fieldset-content" style="height: max-content">
                                     <div class="table-responsive">
                                         <table class="table align-items-center table-flush" id="table-product-po"
                                             style="width: 100%">
@@ -233,12 +233,12 @@
                                         </table>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-6 col-5 mt-4">
+                                        <div class="col-lg-4 col-4 mt-4">
                                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                                 data-target=".bd-add-product">{{ __('Add Product') }}</button>
                                             @include('purchaseorder.modal.create')
                                         </div>
-                                        <div class="col-lg-6 col-5 mt-4 text-right">
+                                        <div class="col-lg-8 col-8 mt-4 text-right">
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <h2>TOTAL</h2>

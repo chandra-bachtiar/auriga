@@ -23,6 +23,7 @@ class CreatePosTable extends Migration
             $table->string('sales');
             $table->char('approval')->nullable();
             $table->date('date');
+            $table->string('file')->nullable();
             
             // Kenapa json ini ?
             // $table->json('order_type')->nullable();
