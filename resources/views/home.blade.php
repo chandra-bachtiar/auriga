@@ -75,32 +75,8 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('pertanyaans.index') }}" class="text-nowrap">
-                                        Go to pertanyaan index
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">User</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
-                                            <i class="fa fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('users.index') }}" class="text-nowrap">
-                                        Go to users index
+                                    <a href="{{ route('business-unit.index') }}" class="text-nowrap">
+                                        Go to Business Unit
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </p>
@@ -114,17 +90,17 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $sekolah }}</span>
+                                        <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
-                                            <i class="fa fa-graduation-cap"></i>
+                                        <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
+                                            <i class="fa fa-users"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('sekolahs.index') }}" class="text-nowrap">
-                                        Go to Sekolah index
+                                    <a href="{{ route('users.index') }}" class="text-nowrap">
+                                        Go to Sales
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </p>
@@ -137,18 +113,42 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Kategori</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $kategori }}</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Product</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $product }}</span>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                            <i class="fa fa-list"></i>
+                                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
+                                            <i class="fa fa-graduation-cap"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('kategoris.index') }}" class="text-nowrap">
-                                        Go to kategori index
+                                    <a href="{{ route('product.index') }}" class="text-nowrap">
+                                        Go to Product
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Purchase Order</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $po }}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                            <i class="fa fa-currency"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+                                    <a href="{{ route('po.index') }}" class="text-nowrap">
+                                        Go to Purchase Order
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </p>
@@ -158,7 +158,7 @@
                 </div>
                 @endrole
 
-                @role('supervisor')
+                {{-- @role('supervisor')
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-stats">
@@ -209,7 +209,7 @@
                         </div>
                     </div>
                 </div>
-                @endrole
+                @endrole --}}
 
                 @role('user')
                 <div class="row">
@@ -219,18 +219,90 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Survei</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $survey }}</span>
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Business Unit</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $bisnis_unit }}</span>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                            <i class="fa fa-filter"></i>
+                                        <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
+                                            <i class="fa fa-question-circle"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('sekolahs.index') }}" class="text-nowrap">
-                                        Go to sekolah index
+                                    <a href="{{ route('business-unit.index') }}" class="text-nowrap">
+                                        Go to Business Unit
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+                                    <a href="{{ route('users.index') }}" class="text-nowrap">
+                                        Go to Sales
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Product</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $product }}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
+                                            <i class="fa fa-graduation-cap"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+                                    <a href="{{ route('product.index') }}" class="text-nowrap">
+                                        Go to Product
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-stats">
+                            <!-- Card body -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Purchase Order</h5>
+                                        <span class="h2 font-weight-bold mb-0">{{ $po }}</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                                            <i class="fa fa-currency"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-sm">
+                                    <a href="{{ route('po.index') }}" class="text-nowrap">
+                                        Go to Purchase Order
                                         <i class="fa fa-arrow-right"></i>
                                     </a>
                                 </p>

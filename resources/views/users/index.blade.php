@@ -19,7 +19,7 @@
                     @can('user-create')
                         <div class="col-lg-6 col-5 text-right">
                             <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
-                                data-target=".bd-create-user">{{ __('Add User') }}</button>
+                                data-target=".bd-create-user">{{ __('Add Sales') }}</button>
                             @include('users.modal.create')
                         </div>
                     @endcan

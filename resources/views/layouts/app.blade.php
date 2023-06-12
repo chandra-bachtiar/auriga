@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>SSL @yield('title')</title>
+    <title>DCH AURIGA @yield('title')</title>
     <!-- Favicon -->
     <link rel="icon" href="img/brand/favicon.png" type="image/png">
     <!-- Fonts -->
@@ -25,7 +25,7 @@
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ route('/') }}">
-                <img src="{{ asset('img/brand/alton_white.png') }}">
+                <img src="{{ asset('img/theme/purchasing.png') }}">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
                 aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,12 +50,12 @@
                     </div>
                 </div>
                 <hr class="d-lg-none" />
-                <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                {{-- <ul class="navbar-nav align-items-lg-center ml-lg-auto">
                     
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </nav>

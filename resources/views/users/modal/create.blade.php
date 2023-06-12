@@ -5,7 +5,7 @@
             <div class="card">
                 <!-- Card header -->
                 <div class="card-header">
-                    <h5 class="modal-title" style="text-align: start">{{ __('Create New User') }}</h5>
+                    <h5 class="modal-title" style="text-align: start">{{ __('Create New Sales') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -76,7 +76,7 @@
                         <input class="form-control" type="text" name="date_of_entry" hidden>
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="input-group input-group-merge">
                                         <div class="input-group-prepend">
@@ -92,10 +92,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Phone number" type="text"
+                                            name="phone" required>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding-left:0; padding-right:0;">
                             <div class="form-group">
-                                <label class="form-control-label float-left">{{__('User Business')}}</label>
+                                <label class="form-control-label float-left">{{__('Business Unit')}}</label>
                                 <div class="input-group input-group-merge">
                                     <select class="form-control" data-toggle="select" multiple name="bu_id[]">
                                         @foreach ($business as $bu)

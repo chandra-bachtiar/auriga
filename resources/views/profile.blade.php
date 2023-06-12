@@ -70,7 +70,7 @@
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="mb-0">{{ __('Edit User') }} : <b>{{ auth()->user()->fullname }}</b>
+                        <h3 class="mb-0">{{ __('Edit Profile') }} : <b>{{ auth()->user()->fullname }}</b>
                         </h3>
                     </div>
                     <!-- Reset Password -->

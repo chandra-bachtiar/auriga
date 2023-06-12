@@ -332,6 +332,19 @@
             }; // add zero in front of numbers < 10
             return i;
         }
+
+
+        $('.mdl-detail').click(function() {
+            // Mendapatkan data ID dari atribut data-id tombol yang diklik
+            var id = $(this).data('id');
+            $('#idKu').val(id);
+        });
+
+        function idr($p)
+        {
+            $result = 'Rp. ' . number_format($p, 2, ',', '.');
+            return $result;
+        }
     </script>
 
     @yield('custom-script')

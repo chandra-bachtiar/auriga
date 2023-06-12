@@ -55,6 +55,10 @@ License - nucleoapp.com/license/
 .ni.circle {
   border-radius: 50%;
 }
+
+.tb1{
+    padding:6px !important;
+}
 /*------------------------
   list icons
 -------------------------*/

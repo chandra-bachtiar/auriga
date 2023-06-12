@@ -132,57 +132,6 @@
     </div>
     <div class="col-xl-6">
         <div class="form-group">
-            <label class="form-control-label">{{ __('Last Education') }}</label>
-            <div class="input-group input-group-merge">
-                <select class="form-control" data-toggle="select" name="last_education">
-                    <option value="" selected>{{ __('Select last education') }}</option>
-                    @php
-                        $sma = '';
-                        $d2 = '';
-                        $d3 = '';
-                        $d4_s1 = '';
-                        $s2 = '';
-                    @endphp
-                    @if ($user->last_education == 'SMA/Sederajat')
-                        @php
-                            $sma = 'selected';
-                        @endphp
-                    @elseif($user->last_education == 'D2')
-                        @php
-                            $d2 = 'selected';
-                        @endphp
-                    @elseif($user->last_education == 'D3')
-                        @php
-                            $d3 = 'selected';
-                        @endphp
-                    @elseif($user->last_education == 'D4/S1')
-                        @php
-                            $d4_s1 = 'selected';
-                        @endphp
-                    @elseif($user->last_education == 'S2')
-                        @php
-                            $s2 = 'selected';
-                        @endphp
-                    @endif
-                    <option value="SMA/Sederajat" {{ $sma }}>{{ __('SMA/Sederajat') }}</option>
-                    <option value="D2" {{ $d2 }}>{{ __('D2') }}</option>
-                    <option value="D3" {{ $d3 }}>{{ __('D3') }}</option>
-                    <option value="D4/S1" {{ $d4_s1 }}>{{ __('D4/S1') }}</option>
-                    <option value="S2" {{ $s2 }}>{{ __('S2') }}</option>
-                </select>
-                @error('last_edication')
-                    <small class="text-danger" role="alert">
-                        {{ $message }}
-                    </small>
-                @enderror
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xl-6">
-        <div class="form-group">
             <label class="form-control-label">{{ __('Phone') }}</label>
             <div class="input-group input-group-merge">
                 <input type="text" value="{{ $user->phone }}" class="form-control" name="phone" placeholder="Phone"
@@ -195,7 +144,10 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-6">
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
         <div class="form-group">
             <label class="form-control-label">{{ __('Photo') }}</label>
             <div class="input-group input-group-merge">
