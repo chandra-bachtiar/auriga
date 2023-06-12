@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class po extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $guarded = ['id_po'];
+    protected $fillable = ['id_po','id_bu','no_order','customer_name','address','phone','sales','approval','date','file',
+                            'order_type','remarks','grand_total','created_at','updated_at'];
 
     public function bu()
     {

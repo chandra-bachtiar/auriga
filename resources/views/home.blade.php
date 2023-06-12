@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                            <i class="fa fa-currency"></i>
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -296,7 +296,7 @@
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                            <i class="fa fa-currency"></i>
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>

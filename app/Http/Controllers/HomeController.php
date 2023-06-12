@@ -107,9 +107,6 @@ class HomeController extends Controller
             'fullname' => 'required|max:255|min:8',
             'email' => 'required|email|unique:users,email,'.$id,
             'gender' => 'required',
-            'last_education' => 'required',
-            'nik' => 'required',
-            'npwp' => 'required',
             'phone' => 'required',
             'photo' => 'mimes:jpeg,jpg,png,svg|max:2048',
         ]);

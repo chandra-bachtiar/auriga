@@ -95,7 +95,7 @@
                                                 <img src="{{ asset('img/product/' . $p->gambar) }}" width="80px"
                                                     class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
                                             @elseif($p->gambar == null)
-                                                <img src="{{ asset('img/profile/user-default.png') }}" width="80px"
+                                                <img src="{{ asset('img/brand/image.png') }}" width="80px"
                                                     class="mt-1" style="box-shadow: 3px 3px #d3d3d3; border-radius: 10px">
                                             @endif
                                         </td>

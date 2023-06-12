@@ -37,9 +37,16 @@ class PoController extends Controller
     public function create()
     {
         $auth = Auth::user()->fullname;
-        $po_all = po::where('sales',Auth::user()->fullname)->get();
-        $po = po::join('po_details','po_details.id_po','=','pos.id_po')->get();
-        return view('purchaseorder.indexPo',compact('po','auth','po_all'));
+        $po_all = po::where('sales',Auth::user()->fullname)->orderBy('id_po', 'desc')->get();
+        $pov = po::join('po_details','po_details.id_po','=','pos.id_po')
+                ->select('*', DB::raw('count(`no_order`) as banyak'))
+                ->where('sales', Auth::user()->fullname)
+                ->orderBy('pos.id_po', 'desc')
+                ->groupBy('no_order')
+                ->having('banyak', '>=' , 1)
+                ->get();
+        $po = po::join('po_details','po_details.id_po','=','pos.id_po')->where('sales', Auth::user()->fullname)->get();
+        return view('purchaseorder.indexPo',compact('po','auth','po_all','pov'));
     }
 
     public function createPo(){

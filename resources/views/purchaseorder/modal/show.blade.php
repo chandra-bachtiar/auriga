@@ -1,5 +1,5 @@
-@foreach ($po as $p)
-    <div class="modal fade ModalShow" id="sekolah-show-{{ $p->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+@foreach ($pov as $p)
+    <div class="modal fade ModalShow" id="sekolah-show-{{ $p->id_po }}" tabindex="-1" role="dialog" aria-hidden="true">
         
         <div class="modal-dialog modal-xl" style="width: 100%; height: 100%">
             <div class="modal-content">
@@ -72,7 +72,7 @@
                                         <tr>
                                             <td class="tb1">Grand Total</td>
                                             <td class="tb1">:</td>
-                                            <td class="tb1">{{$p->grand_total}}</td>
+                                            <td class="tb1">{{idr($p->grand_total)}}</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -124,7 +124,7 @@
                                                         <td>{{ idr($lo->price_exclude) }}</td>
                                                         <td>{{ idr($lo->price_include) }}</td>
                                                         <td>{{ $lo->qty }}</td>
-                                                        <td>{{ $lo->disc }}</td>
+                                                        <td>{{ $lo->disc . "%" }}</td>
                                                         <td>{{ idr($lo->value )}}</td>
                                                     </tr>
                                                 @endif
