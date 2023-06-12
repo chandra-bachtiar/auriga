@@ -327,8 +327,8 @@
                     json.uom,
                     integerToRupiah(json.price),
                     integerToRupiah(json.price * 1.11),
-                    '<input class="form-control qty-product" type="text" value="1" placeholder="QTY" type="text" name="qty_product">',
-                    '<input class="form-control disc-product no-spinner" type="number" step=".01" value="0" placeholder="Disc" type="text" name="disc_product">',
+                    '<input class="form-control qty-product" style="width:50px;" type="text" value="1" placeholder="QTY" type="text" name="qty_product">',
+                    '<input class="form-control disc-product" style="width:50px; no-spinner" type="number" step=".01" value="0" placeholder="Disc" type="text" name="disc_product">',
                     integerToRupiah(json.price),
                     '<button type="button" class="btn btn-sm btn-danger btn-remove-product" id="btn-remove-product"><i class="fas fa-trash"></i></button>'
                 ];
@@ -355,10 +355,10 @@
                         let price = rupiahToInteger(rowData[5]);
                         let qty = event.target.value;
                         let disc = el.closest('tr').querySelector('.disc-product').value;
-                        rowData[7] = '<input class="form-control qty-product" type="text" value="' +
+                        rowData[7] = '<input class="form-control qty-product" style="width:50px;" type="text" value="' +
                             qty + '" placeholder="QTY" type="text" name="qty_product">';
                         rowData[8] =
-                            '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' +
+                            '<input class="form-control disc-product no-spinner" style="width:50px;" type="number" step=".01" value="' +
                             disc + '" placeholder="Disc" type="text" name="disc_product">';
                         rowData[9] = integerToRupiah((price - (price * (disc / 100))) * qty);
                         tableProduct.row(row).data(rowData).draw();
@@ -385,10 +385,10 @@
                         let price = rupiahToInteger(rowData[5]);
                         let qty = el.closest('tr').querySelector('.qty-product').value;
                         let disc = event.target.value;
-                        rowData[7] = '<input class="form-control qty-product" type="text" value="' +
+                        rowData[7] = '<input class="form-control qty-product" style="width:50px;" type="text" value="' +
                             qty + '" placeholder="QTY" type="text" name="qty_product">';
                         rowData[8] =
-                            '<input class="form-control disc-product no-spinner" type="number" step=".01" value="' +
+                            '<input class="form-control disc-product no-spinner" style="width:50px;" type="number" step=".01" value="' +
                             disc + '" placeholder="Disc" type="text" name="disc_product">';
                         rowData[9] = integerToRupiah((price - (price * (disc / 100))) * qty);
                         tableProduct.row(row).data(rowData).draw();
