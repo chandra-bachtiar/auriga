@@ -31,8 +31,9 @@ class PoController extends Controller
     public function create()
     {
         $auth = Auth::user()->fullname;
+        $po_all = po::where('sales',Auth::user()->fullname)->get();
         $po = po::join('po_details','po_details.id_po','=','pos.id_po')->get();
-        return view('purchaseorder.indexPo',compact('po','auth'));
+        return view('purchaseorder.indexPo',compact('po','auth','po_all'));
     }
 
     public function createPo(){

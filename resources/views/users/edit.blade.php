@@ -1,4 +1,4 @@
-@section('title', '| User - Edit')
+@section('title', '| Sales - Edit')
 @extends('layouts.main')
 @section('content')
     <!-- Header -->
@@ -7,15 +7,15 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">{{ __('Edit User') }}</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">{{ __('Edit Sales') }}</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
                                 </li>
                                 <li class="breadcrumb-item"><a
-                                        href="{{ route('users.index') }}">{{ __('User Management') }}</a>
+                                        href="{{ route('users.index') }}">{{ __('Sales Management') }}</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit User') }}</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ __('Edit Sales') }}</li>
                             </ol>
                         </nav>
                     </div>
@@ -29,7 +29,7 @@
             <div class="col-xl-8">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="mb-0">{{ __('Edit User') }} : <b>{{ $user->fullname }}</b></h3>
+                        <h3 class="mb-0">{{ __('Edit Sales') }} : <b>{{ $user->fullname }}</b></h3>
                     </div>
                     <!-- Card body -->
                     @if (count($errors) > 0)

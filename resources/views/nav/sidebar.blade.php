@@ -27,7 +27,7 @@
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
-                    @can('user-list')
+                     @role('admin')
                         <li class="nav-item">
                             <a class="nav-link" href="#navbar-user" data-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="navbar-user">
@@ -36,6 +36,11 @@
                             </a>
                             <div class="collapse" id="navbar-user">
                                 <ul class="nav nav-sm flex-column">
+                                    {{-- @can('role-list')
+                                        <li class="nav-item">
+                                            <a href="{{ route('roles.index') }}" class="nav-link">Role & Permission</a>
+                                        </li>
+                                    @endcan --}}
                                     @can('role-list')
                                         <li class="nav-item">
                                             <a href="{{ route('roles.index') }}" class="nav-link">Role & Permission</a>
@@ -44,7 +49,7 @@
                                 </ul>
                             </div>
                         </li>
-                    @endcan
+                    @endrole
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-master" data-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="navbar-master">
@@ -53,23 +58,26 @@
                         </a>
                         <div class="collapse" id="navbar-master">
                             <ul class="nav nav-sm flex-column">
-
+                                @role('admin')
                                 <li class="nav-item">
                                     <a href="{{ route('business-unit.index') }}" class="nav-link">Business Unit</a>
                                 </li>
+                                @endrole
                                 <li class="nav-item">
                                     <a href="{{ route('product.index') }}" class="nav-link">Product</a>
                                 </li>
+                                @role('admin')
                                 <li class="nav-item">
                                     <a href="{{ route('users.index') }}" class="nav-link">Sales</a>
                                 </li>
+                                @endrole
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('po.create') }}">
                             <i class="fa fa-shopping-cart text-purple"></i>
-                            <span class="nav-link-text">Create Purchase Order</span>
+                            <span class="nav-link-text">Purchase Order</span>
                         </a>
                     </li>
                     @hasrole('admin')

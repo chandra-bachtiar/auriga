@@ -83,7 +83,7 @@ class HomeController extends Controller
             $survey = survei::where('by', $auth->id)->count();
             // $unacceptedTasks = Task::whereRaw('(task_status_id = "1" OR task_status_id = "2") AND user_id = "'.$auth->id.'"')->limit(3)->orderBy('deadline','DESC')->get();
             return view('home', compact(
-            'response','survey','checkProfil'
+                'response','kategori','users','pertanyaan','sekolah','checkProfil','bisnis_unit', 'po', 'product'
             ));
         }
     }

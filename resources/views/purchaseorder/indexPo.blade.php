@@ -51,11 +51,11 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>
-                                    <th>Item Name</th>
-                                    <th>Date</th>
-                                    <th>Business Unit</th>
+                                    <th>Order Number</th>
                                     <th>Customer Name</th>
+                                    <th>Business Unit</th>
                                     <th>Sales Name</th>
+                                    <th>Order Type</th>
                                     <th>Approval</th>
                                     <th style="text-align: center; width: 100px">Total Price</th>
                                     <th style="text-align: center; width: 100px">{{ __('Action') }}</th>
@@ -64,11 +64,11 @@
                             <tfoot>
                                 <tr>
                                     <th>{{ __('#') }}</th>
-                                    <th>Item Name</th>
-                                    <th>Date</th>
-                                    <th>Business Unit</th>
+                                    <th>Order Number</th>
                                     <th>Customer Name</th>
+                                    <th>Business Unit</th>
                                     <th>Sales Name</th>
+                                    <th>Order Type</th>
                                     <th>Approval</th>
                                     <th style="text-align: center; width: 100px">Total Price</th>
                                     <th style="text-align: center; width: 100px">{{ __('Action') }}</th>
@@ -82,18 +82,18 @@
                                         return $result;
                                     }
                                 @endphp
-                                @foreach ($po as $p)
+                                @foreach ($po_all as $p)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle">{{ $p->item_name }}</td>
-                                        <td style="vertical-align: middle">{{ $p->created_at }}</td>
+                                        <td style="vertical-align: middle">{{ $p->no_order }}</td>
+                                        <td style="vertical-align: middle">{{ $p->customer_name }}</td>
                                         <td style="vertical-align: middle">
                                             <span class="badge badge-pill badge-primary">
                                                 {{ $p->bu->business_unit }}
                                             </span>
                                         </td>
-                                        <td style="vertical-align: middle">{{ $p->customer_name }}</td>
                                         <td style="vertical-align: middle">{{ $p->sales }}</td>
+                                        <td style="vertical-align: middle">{{ $p->order_type }}</td>
                                         <td style="vertical-align: middle">
                                             @if ($p->approval == 'true')
                                                 <span class="badge badge-pill badge-success"><i class="fa fa-check"
@@ -107,8 +107,8 @@
                                             {{ idr($p->grand_total) }}</td>
                                         <td style="vertical-align: middle" align="center">
                                             <a href="#"
-                                                class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
-                                                data-toggle="modal" data-target="#sekolah-show-{{ $p->id }}">
+                                                class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle mdl-detail"
+                                                data-toggle="modal" data-id="{{$p->id_po}}" data-target="#sekolah-show-{{ $p->id }}">
                                                 <span class="btn-inner--icon" data-toggle="tooltip" data-placement="top"
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
