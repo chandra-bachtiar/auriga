@@ -107,7 +107,7 @@
                                         <td style="vertical-align: middle">{{ $p->cbm }}</td>
                                         <td style="vertical-align: middle">{{ $p->kgs }}</td>
                                         <td style="vertical-align: middle; text-align: center; width: 200px">{{ idr($p->price) }}</td>
-                                        <td style="vertical-align: middle" align="center">
+                                        <td style="vertical-align: middle;width: 300px !important;">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
                                                 data-toggle="modal" data-target="#sekolah-show-{{ $p->id }}">
