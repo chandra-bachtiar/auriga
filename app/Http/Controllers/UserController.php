@@ -43,10 +43,12 @@ class UserController extends Controller
             // dd($users);
             return view('users.index',compact('users', 'roles', 'departements','business','user_bu'));
         } else {
-            $users = User::where('departement_id', auth()->user()->departement_id)->orderBy('id','DESC')->get();
+            $business = BussinessUnit::all();
+            $users = User::get();
             $roles = Role::all();
             $departements = Departement::all();
-            return view('users.index',compact('users', 'roles', 'departements'));
+            $user_bu = user_bu::all();
+            return view('users.index',compact('users', 'roles', 'departements','business','user_bu'));
         }
 
         
@@ -170,25 +172,14 @@ class UserController extends Controller
                     ));
         }
 
-        $checkTask     = Task::withTrashed()->select('user_id')->where('user_id', $id)->count();
-        $checkAssignor = Task::withTrashed()->select('created_by')->where('created_by', $id)->count();
-        $checkSalary   = Salary::withTrashed()->select('user_id')->where('user_id', $id)->count();
-        if($checkTask > 0 || $checkAssignor > 0 || $checkSalary > 0){
-            return response()
-                    ->json(array(
-                        'error' => true,
-                        'title'   => 'Warning',
-                        'message' => 'You cant delete this user, because this user is currently dependent'
-                    ));
-        }else{
-            User::find($id)->delete();
-            return response()
-                ->json(array(
-                    'success' => true,
-                    'title'   => 'Success',
-                    'message' => 'Your data has been moved to trash!'
-                ));
-        }
+        User::find($id)->delete();
+        return response()
+            ->json(array(
+                'success' => true,
+                'title'   => 'Success',
+                'message' => 'Your data has been moved to trash!'
+            )
+        );
     }
 
     public function reset(Request $request, $id)

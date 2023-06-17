@@ -8,6 +8,7 @@ use App\Mail\PoMail;
 use App\Models\BussinessUnit;
 use App\Models\po;
 use App\Models\po_detail;
+use App\Models\MailtoAuriga;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class PoController extends Controller
 {
@@ -37,22 +39,48 @@ class PoController extends Controller
     public function create()
     {
         $auth = Auth::user()->fullname;
+        $auth2 = auth()->user();
         $po_all = po::where('sales',Auth::user()->fullname)->orderBy('id_po', 'desc')->get();
-        $pov = po::join('po_details','po_details.id_po','=','pos.id_po')
-                ->select('*', DB::raw('count(`no_order`) as banyak'))
-                ->where('sales', Auth::user()->fullname)
-                ->orderBy('pos.id_po', 'desc')
-                ->groupBy('no_order')
-                ->having('banyak', '>=' , 1)
-                ->get();
+        $pov_admin = po::with(['po_detail','bu'])->get();
+        $pov = po::with(['po_detail','bu'])->where('sales',$auth)->get();
+        
         $po = po::join('po_details','po_details.id_po','=','pos.id_po')->where('sales', Auth::user()->fullname)->get();
-        return view('purchaseorder.indexPo',compact('po','auth','po_all','pov'));
+
+        if($auth2->hasRole('admin')){
+            return view('purchaseorder.indexPo',['po'=>$po,'pov'=>$pov_admin,'auth'=>$auth,'po_all'=>$po_all]);
+        }else if($auth2->hasRole('user')){
+            return view('purchaseorder.indexPo',['po'=>$po,'pov'=>$pov,'auth'=>$auth,'po_all'=>$po_all]);
+        }
     }
 
     public function createPo(){
         $auth = Auth::user()->fullname;
         $product = product::all();
         return view('purchaseorder.detailPo',compact('product','auth'));
+    }
+
+    public function sendMail(){
+        $filename = 'poexport2.xlsx';
+        $exportPath = public_path('excel/po');
+        Excel::store(new PoExport, $filename);
+        Mail::to('dimassidiqp29@gmail.com')->send(new PoMail($exportPath));
+        // $excelFile->save($destinationPath.'/'.$exportPath);
+        // dd($excelFile);
+
+    }
+
+    public function testExport(){
+        $filename = 'bismillah.xlsx';
+        Excel::store(new PoExport, 'bismillah.xlsx','exce');
+        $emailData = [
+            'email'=>'dimassidiqp29@gmail.com',
+            'attachment'=>public_path('excel/po/'.$filename)
+        ];
+        $receiver = MailtoAuriga::all();
+
+        foreach($receiver as $i){
+            Mail::to($i->email)->send(new PoMail($emailData));
+        }
     }
 
     /**
@@ -81,7 +109,6 @@ class PoController extends Controller
             'address' => $request->address,
             'phone' => $request->phone,
             'sales' => $request->sales,
-            // 'file' => Excel::download(new PoExport, 'Purchase_Order.xlsx'),
             'remarks' => $request->remarks,
             'date' => $request->date,
             'order_type' => $request->order_type,
@@ -103,8 +130,31 @@ class PoController extends Controller
                 'value' => $request->value[$key],
             ]);
         }
+        //dd($po_detail);
+        // SEND EMAIL WITH ATTACHMENT
+        $filename = $po->no_order . '-' . now()->format('d F Y').'.xlsx';
+        $items = po::with('po_detail')->where('id_po',$po->id)->get();
+        $emailData = [
+            'id_bu' => $request->id_bu,
+            'no_order' => $generatecode,
+            'customer_name' => $request->customer_name,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'sales' => $request->sales,
+            'remarks' => $request->remarks,
+            'date' => $request->date,
+            'order_type' => $request->order_type,
+            'approval' => $request->approval,
+            'grand_total' => $request->grand_total,
+            'items' => $items[0]->po_detail,
+            'attachment'=>public_path('excel/po/'.$filename)
+        ];
+        Excel::store(new PoExport(compact('emailData')),$filename,'exce');
+        $receiver = MailtoAuriga::all();
+        foreach($receiver as $i){
+            Mail::to($i->email)->send(new PoMail($emailData));
+        }
 
-        // Mail::to('hidayatarif690@gmail.com')->send(new PoMail($po));
         //return status success dan status code 
         return response()->json([
             'status' => 'success',

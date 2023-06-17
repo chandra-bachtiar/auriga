@@ -72,7 +72,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-control-label">Phone Number</label>
-                                                <input type="" class="form-control" id="phoneNumber"
+                                                <input type="number" class="form-control" id="phoneNumber"
                                                     placeholder="Input Phone Number" name="phone">
                                             </div>
                                         </div>
@@ -131,9 +131,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-control-label">Approval</label>
-                                                <div class="custom-control custom-switch mb-3 ml-4"
-                                                    style="padding-top: 10px;">
-                                                    <input class="custom-control-input" id="approval" type="checkbox"
+                                                <div class="custom-control custom-switch ml-4" style="padding-top: 10px;">
+                                                    <input class="custom-control-input" style="width:40px; height:40px" id="approval" type="checkbox"
                                                         name="approval" value="1">
                                                     <label class="custom-control-label" for="approval">Approve</label>
                                                 </div>
@@ -294,6 +293,7 @@
 @section('custom-script')
     <script>
         (function() {
+            //$('#testing').append($('#customerName'));
             // custom script
             let btnProduct = document.querySelectorAll('#btn-add-product');
             btnProduct.forEach(el => {

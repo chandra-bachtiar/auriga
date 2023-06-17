@@ -97,6 +97,9 @@
     @yield('date-filter')
     <script type="text/javascript">
         $(document).ready(function() {
+            document.getE("add_to_me").innerHTML +=
+            "<h3>This is the text which has been inserted by JS</h3>";
+
             minDate = new DateTime($('#min'), {
                 format: 'MMMM Do YYYY'
             });
@@ -107,6 +110,30 @@
             var table = $('#myTable', function() {
                 $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-secondary');
             }).DataTable({
+                // initComplete: function () {
+                //     this.api()
+                //         .columns()
+                //         .every(function () {
+                //             var that = this;
+                //             $('input', this.footer()).on('keyup change clear', function () {
+                //                 if (that.search() !== this.value) {
+                //                     that.search(this.value).draw();
+                //                 }
+                //             });
+                //         });
+                // },
+                initComplete: function () {
+                    this.api()
+                        .columns()
+                        .every(function () {
+                            var that = this;
+                            $('input', this.footer()).on('keyup change clear', function () {
+                                if (that.search() !== this.value) {
+                                    that.search(this.value).draw();
+                                }
+                            });
+                        });
+                },
                 dom: 'Bfrtip',
                 lengthChange: true,
                 buttons: [{
@@ -340,13 +367,8 @@
             $('#idKu').val(id);
         });
 
-        function idr($p)
-        {
-            $result = 'Rp. ' . number_format($p, 2, ',', '.');
-            return $result;
-        }
+        
     </script>
-
     @yield('custom-script')
 </body>
 

@@ -11,16 +11,18 @@ use Illuminate\Queue\SerializesModels;
 class PoMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $details;
+    public $attachment;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($emailData)
     {
-        $this->details = $details
+        $this->attachment = $emailData['attachment'];
+        $this->data = $emailData;
     }
 
     /**
@@ -30,9 +32,7 @@ class PoMail extends Mailable
      */
     public function build()
     {
-        return $this->from('hidayatarif690@gmail.com')->markdown('emails.po')->with([
-            'id_po' => $this->details->id_po,
-            'id_bu' => $this->details->id_bu
-        ]);
+        $subjectEmail = "Purchase Order baru - ". $this->data['no_order'] . "/" . now()->format('d F Y');
+        return $this->view('purchaseorder.excel.template_Email_PO')->with('data',$this->data)->subject($subjectEmail)->attach($this->attachment);
     }
 }

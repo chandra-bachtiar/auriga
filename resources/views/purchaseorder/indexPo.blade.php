@@ -18,10 +18,13 @@
                             </ol>
                         </nav>
                     </div>
+                    @can('purchase-create')
                     <div class="col-lg-6 col-5 text-right">
                         <a href="{{ route('po.index') }}" class="btn btn-sm btn-neutral">{{ __('List Business Units') }}</a>
-                        {{-- @include('kategori.modal.create') --}}
                     </div>
+                    @endcan
+                    <a href="{{ route('sendMail') }}" class="btn btn-sm btn-secondary">Send Email</a>
+                    <a href="{{ route('testExport') }}" class="btn btn-sm btn-secondary">Export Excel</a>
                 </div>
             </div>
         </div>
@@ -117,11 +120,13 @@
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
+                                            @can('purchase-delete')
                                             <button onclick="deleteItem(this)" data-id="{{ $p->id }}"
                                                 class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
                                                 data-toggle="tooltip" data-placement="top" title="Remove">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            @endcan
                                             @include('purchaseorder.modal.show')
                                         </td>
                                     </tr>

@@ -86,7 +86,7 @@
                                     <table class="table table-flush" id="myTable">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th>{{ __('#') }}</th>
+                                                <th>#</th>
                                                 <th>Number Item</th>
                                                 <th>Item Name</th>
                                                 <th>SKU DCH</th>
@@ -100,7 +100,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>{{ __('#') }}</th>
+                                                <th>#</th>
                                                 <th>Number Item</th>
                                                 <th>Item Name</th>
                                                 <th>SKU DCH</th>
@@ -113,21 +113,20 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            @foreach($po as $lo)
-                                                @if($lo->id_po == $p->id_po)
+                                            @foreach($p->po_detail as $i)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $lo->number_item }}</td>
-                                                        <td>{{ $lo->item_name }}</td>
-                                                        <td>{{ $lo->sku_dch }}</td>
-                                                        <td>{{ $lo->uom }}</td>
-                                                        <td>{{ idr($lo->price_exclude) }}</td>
-                                                        <td>{{ idr($lo->price_include) }}</td>
-                                                        <td>{{ $lo->qty }}</td>
-                                                        <td>{{ $lo->disc . "%" }}</td>
-                                                        <td>{{ idr($lo->value )}}</td>
+                                                        {{-- <td>{{$p->po_detail->number_item}}</td> --}}
+                                                        <td>{{$loop->iteration}}</td>
+                                                        <td>{{ $i->number_item }}</td>
+                                                        <td>{{ $i->item_name }}</td>
+                                                        <td>{{ $i->sku_dch }}</td>
+                                                        <td>{{ $i->uom }}</td>
+                                                        <td>{{ idr($i->price_exclude) }}</td>
+                                                        <td>{{ idr($i->price_include) }}</td>
+                                                        <td>{{ $i->qty }}</td>
+                                                        <td>{{ $i->disc . "%" }}</td>
+                                                        <td>{{ idr($i->value )}}</td>
                                                     </tr>
-                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>

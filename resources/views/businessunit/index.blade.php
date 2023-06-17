@@ -18,11 +18,13 @@
                             </ol>
                         </nav>
                     </div>
+                    @can('business-create')
                     <div class="col-lg-6 col-5 text-right">
                         <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
                             data-target=".bd-create-sekolah">{{ __('Add Bussiness Unit') }}</button>
                         @include('businessunit.modal.create')
                     </div>
+                    @endcan
                 </div>
             </div>
         </div>
@@ -96,17 +98,21 @@
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
+                                            @can('business-edit')
                                             <a href="{{ route('business-unit.edit', $b->id) }}"
                                                 class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
                                                 data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
                                                 </span>
                                             </a>
+                                            @endcan
+                                            @can('business-delete')
                                             <button onclick="deleteItem(this)" data-id="{{ $b->id }}"
                                                 class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
                                                 data-toggle="tooltip" data-placement="top" title="Remove">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            @endcan
                                             @include('businessunit.modal.show')
                                         </td>
                                     </tr>
