@@ -38,7 +38,11 @@ class PermissionTableSeeder extends Seeder
             'dashboard-bu',
             'dashboard-product',
             'dashboard-sales',
-            'dashboard-po'
+            'dashboard-po',
+            'mailto-list',
+            'mailto-create',
+            'mailto-edit',
+            'mailto-delete',
 
         ];
 

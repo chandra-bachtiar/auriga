@@ -18,11 +18,13 @@
                             </ol>
                         </nav>
                     </div>
+                    @can('product-create')
                     <div class="col-lg-6 col-5 text-right">
                         <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
                             data-target=".bd-create-sekolah">{{ __('Add Product') }}</button>
                         @include('product.modal.create')
                     </div>
+                    @endcan
                 </div>
             </div>
         </div>
@@ -60,8 +62,8 @@
                                     <th>UOM</th>
                                     <th>CBM</th>
                                     <th>KGS</th>
-                                    <th style="text-align: center; width: 200px">Price</th>
-                                    <th style="text-align: center; width: 300px">{{ __('Action') }}</th>
+                                    <th style="text-align: center;width: 200px">Price</th>
+                                    <th style="text-align: center;width: 300px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -75,18 +77,18 @@
                                     <th>UOM</th>
                                     <th>CBM</th>
                                     <th>KGS</th>
-                                    <th style="text-align: center; width: 200px">Price</th>
-                                    <th style="text-align: center; width: 300px">{{ __('Action') }}</th>
+                                    <th style="text-align: center;width: 200px">Price</th>
+                                    <th style="text-align: center;width: 300px">{{ __('Action') }}</th>
                                 </tr>
                             </tfoot>
+                            @php
+                                function idr($p)
+                                {
+                                    $result = 'Rp. ' . number_format($p, 2, ',', '.');
+                                    return $result;
+                                }
+                            @endphp
                             <tbody>
-                                @php
-                                    function idr($p)
-                                    {
-                                        $result = 'Rp. ' . number_format($p, 2, ',', '.');
-                                        return $result;
-                                    }
-                                @endphp
                                 @foreach ($product as $p)
                                     <tr>
                                         <td style="vertical-align: middle">{{ $loop->iteration }}</td>
@@ -102,12 +104,12 @@
                                         <td style="vertical-align: middle">{{ $p->bu->business_unit }}</td>
                                         <td style="vertical-align: middle">{{ $p->item_number }}</td>
                                         <td style="vertical-align: middle">{{ $p->sku_dch }}</td>
-                                        <td style="vertical-align: middle">{{ $p->item_number }}</td>
+                                        <td style="vertical-align: middle">{{ $p->item_name }}</td>
                                         <td style="vertical-align: middle">{{ $p->uom }}</td>
                                         <td style="vertical-align: middle">{{ $p->cbm }}</td>
                                         <td style="vertical-align: middle">{{ $p->kgs }}</td>
                                         <td style="vertical-align: middle; text-align: center; width: 200px">{{ idr($p->price) }}</td>
-                                        <td style="vertical-align: middle;width: 300px !important;">
+                                        <td style="vertical-align: middle;width: 300px;">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
                                                 data-toggle="modal" data-target="#sekolah-show-{{ $p->id }}">
@@ -115,17 +117,21 @@
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
+                                            @can('product-edit')
                                             <a href="{{ route('product.edit', $p->id) }}"
                                                 class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
                                                 data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
                                                 </span>
                                             </a>
+                                            @endcan
+                                            @can('product-delete')
                                             <button onclick="deleteItem(this)" data-id="{{ $p->id }}"
                                                 class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
                                                 data-toggle="tooltip" data-placement="top" title="Remove">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            @endcan
                                             @include('product.modal.show')
                                         </td>
                                     </tr>

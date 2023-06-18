@@ -124,7 +124,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-font"></i></span>
                 </div>
-                <input class="form-control" value="{{ $product->uom }}" placeholder="KGS" type="number"
+                <input class="form-control" value="{{ $product->kgs }}" placeholder="KGS" type="number"
                     step="0.000001" name="kgs" required>
             </div>
             @error('kgs')

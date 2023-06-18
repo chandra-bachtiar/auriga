@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                         </div>
-                        <table class="table" id="table-product">
+                        <table class="table table-flush" id="table-product">
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>

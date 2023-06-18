@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\BussinessUnit;
 use App\Models\product;
+use App\Models\MailtoAuriga;
 use Illuminate\Database\Seeder;
 
 class DepartementSeeder extends Seeder
@@ -144,6 +145,17 @@ class DepartementSeeder extends Seeder
             product::create($p);
         }
 
+        $mailto = [
+            [
+                'email' => 'dimassidiqp29@gmail.com'
+            ],
+            [
+                'email' => 'dimasml290@gmail.com'
+            ]
+        ];
+        foreach($mailto as $m){
+            MailtoAuriga::create($m);
+        }
         
     }
 }

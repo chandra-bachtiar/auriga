@@ -57,8 +57,8 @@
                         </div>
                     </div>
                 @endif
-                @role('admin')
                 <div class="row">
+                    @can('dashboard-bu')
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-stats">
                             <!-- Card body -->
@@ -83,6 +83,8 @@
                             </div>
                         </div>
                     </div>
+                    @endcan
+                    @can('dashboard-sales')
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-stats">
                             <!-- Card body -->
@@ -107,6 +109,8 @@
                             </div>
                         </div>
                     </div>
+                    @endcan
+                    @can('dashboard-product')
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-stats">
                             <!-- Card body -->
@@ -131,6 +135,8 @@
                             </div>
                         </div>
                     </div>
+                    @endcan
+                    @can('dashboard-po')
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-stats">
                             <!-- Card body -->
@@ -155,8 +161,8 @@
                             </div>
                         </div>
                     </div>
+                    @endcan
                 </div>
-                @endrole
 
                 {{-- @role('supervisor')
                 <div class="row">
@@ -210,107 +216,6 @@
                     </div>
                 </div>
                 @endrole --}}
-
-                @role('user')
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Business Unit</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $bisnis_unit }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
-                                            <i class="fa fa-question-circle"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('business-unit.index') }}" class="text-nowrap">
-                                        Go to Business Unit
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $users }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow">
-                                            <i class="fa fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('users.index') }}" class="text-nowrap">
-                                        Go to Sales
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Product</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $product }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow">
-                                            <i class="fa fa-graduation-cap"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('product.index') }}" class="text-nowrap">
-                                        Go to Product
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats">
-                            <!-- Card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title text-uppercase text-muted mb-0">Purchase Order</h5>
-                                        <span class="h2 font-weight-bold mb-0">{{ $po }}</span>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mt-3 mb-0 text-sm">
-                                    <a href="{{ route('po.index') }}" class="text-nowrap">
-                                        Go to Purchase Order
-                                        <i class="fa fa-arrow-right"></i>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endrole
             </div>
         </div>
     </div>

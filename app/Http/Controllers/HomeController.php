@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Calendarific\Calendarific;
 use App\Models\{
     bobot,
@@ -66,19 +67,18 @@ class HomeController extends Controller
         $bisnis_unit = BussinessUnit::count();
         $product = product::count();
         $po = po::count();
+        $po_sales = po::where('sales',Auth::user()->fullname)->count();
         $auth = auth()->user();
         $checkProfil = $auth->date_of_birth == null || $auth->place_of_birth == null || $auth->gender == null || $auth->address == null || $auth->phone == null;
 
         if ($auth->hasRole('admin')) {
-            return view('home', compact(
-            'response','kategori','users','pertanyaan','sekolah','checkProfil','bisnis_unit', 'po', 'product'
-            ));
-
+            return view('home', ['response'=>$response,'kategori'=>$kategori,'users'=>$users,'checkProfil'=>$checkProfil,'bisnis_unit'=>$bisnis_unit,'po'=>$po,'product'=>$product]);
         } else if ($auth->hasRole('supervisor')){
             return view('home', compact(
-            'response','users','bobot','checkProfil'
+                'response','kategori','users','pertanyaan','sekolah','checkProfil','bisnis_unit', 'po', 'product'
             ));
-
+        }else if ($auth->hasRole('Sales Good Pharma')){
+            return view('home', ['response'=>$response,'kategori'=>$kategori,'users'=>$users,'checkProfil'=>$checkProfil,'bisnis_unit'=>$bisnis_unit,'po'=>$po_sales,'product'=>$product]);
         } else if ($auth->hasRole('user')) {
             $survey = survei::where('by', $auth->id)->count();
             // $unacceptedTasks = Task::whereRaw('(task_status_id = "1" OR task_status_id = "2") AND user_id = "'.$auth->id.'"')->limit(3)->orderBy('deadline','DESC')->get();

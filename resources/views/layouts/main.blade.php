@@ -104,44 +104,6 @@
                 format: 'MMMM Do YYYY'
             });
 
-            var table = $('#myTable', function() {
-                $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-secondary');
-            }).DataTable({
-                dom: 'Bfrtip',
-                lengthChange: true,
-                buttons: [{
-                        extend: 'pdfHtml5',
-                        orientation: 'potrait',
-                        pageSize: 'LEGAL',
-                        download: 'open',
-                        exportOptions: {
-                            columns: ':visible',
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: ':visible',
-                        }
-                    },
-                    {
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: ':visible',
-                        }
-                    },
-                    'copy'
-                ],
-                language: {
-                    paginate: {
-                        previous: "<i class='fas fa-angle-left'>",
-                        next: "<i class='fas fa-angle-right'>"
-                    }
-                },
-                orderCellsTop: true,
-                fixedHeader: true,
-            });
-
             var tableProduct = $('#table-product', function() {
                 $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-secondary');
             }).DataTable({
@@ -161,7 +123,66 @@
 
         });
     </script>
-    {{-- <script type="text/javascript">
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        minDate = new DateTime($('#min'), {
+            format: 'MMMM Do YYYY'
+        });
+        maxDate = new DateTime($('#max'), {
+            format: 'MMMM Do YYYY'
+        });
+
+        var tableBu = $('#table-bu', function() {
+                $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-secondary');
+            }).DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                'url': "{{ route('get.datatables.bu') }}",
+                'type': 'GET'
+            },
+            columns: [
+                {
+                    data: 'id',
+                    name: 'id'
+                },
+                {
+                    data: 'gambar',
+                    name: 'gambar'
+                },
+                {
+                    data: 'agency_code',
+                    name: 'agency_code'
+                },
+                {
+                    data: 'business_unit',
+                    name: 'business_unit'
+                },
+                {
+                    data: 'brand_name',
+                    name: 'brand_name'
+                },
+                {
+                    data: 'company',
+                    name: 'company'
+                },
+            ],
+            lengthChange: true,
+            language: {
+                paginate: {
+                    previous: "<i class='fas fa-angle-left'>",
+                    next: "<i class='fas fa-angle-right'>"
+                }
+            },
+            orderCellsTop: true,
+            fixedHeader: true,
+        });
+
+
+    });
+</script>
+    <script type="text/javascript">
         $(document).ready(function() {
 
             // Create date inputs
@@ -172,37 +193,37 @@
                 format: 'MMMM Do YYYY'
             });
 
-            $('#myTable thead tr')
-                .clone(true)
-                .addClass('filters')
-                .appendTo('#myTable thead');
-
             var table = $('#myTable', function() {
                 $('.dt-buttons .btn').removeClass('btn-secondary').addClass('btn-sm btn-secondary');
             }).DataTable({
                 lengthChange: true,
-                buttons: [{
-                        extend: 'pdfHtml5',
-                        orientation: 'potrait',
-                        pageSize: 'LEGAL',
-                        download: 'open',
-                        exportOptions: {
-                            columns: ':visible',
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: ':visible',
-                        }
-                    },
-                    {
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: ':visible',
-                        }
-                    },
-                    'copy', 'colvis'
+                buttons: [
+                    // {
+                    //     extend: 'pdfHtml5',
+                    //     title: 'Auriga Purchase Order',
+                    //     orientation: 'potrait',
+                    //     pageSize: 'LEGAL',
+                    //     download: 'open',
+                    //     exportOptions: {
+                    //         columns: ':visible',
+                    //     }
+                    // },
+                    // {
+                    //     extend: 'excelHtml5',
+                    //     title: 'Auriga Purchase Order',
+                    //     titleAttr: 'Export Excel',
+                    //     exportOptions: {
+                    //         columns: ':visible',
+                    //     }
+                    // },
+                    // {
+                    //     extend: 'csvHtml5',
+                    //     exportOptions: {
+                    //         columns: ':visible',
+                    //     }
+                    // },
+                    // 'copy',
+                    'colvis'
                 ],
                 language: {
                     paginate: {
@@ -212,57 +233,6 @@
                 },
                 orderCellsTop: true,
                 fixedHeader: true,
-                initComplete: function() {
-                    var api = this.api();
-
-                    // For each column
-                    api
-                        .columns()
-                        .eq(0)
-                        .each(function(colIdx) {
-                            // Set the header cell to contain the input element
-                            var cell = $('.filters th').eq(
-                                $(api.column(colIdx).header()).index()
-                            );
-                            var title = $(cell).text();
-                            $(cell).html(
-                                '<input type="text" class="form-control form-control-sm" placeholder="' +
-                                title + '" />');
-
-                            // On every keypress in this input
-                            $(
-                                    'input',
-                                    $('.filters th').eq($(api.column(colIdx).header()).index())
-                                )
-                                .off('keyup change')
-                                .on('keyup change', function(e) {
-                                    e.stopPropagation();
-
-                                    // Get the search value
-                                    $(this).attr('title', $(this).val());
-                                    var regexr =
-                                        '({search})'; //$(this).parents('th').find('select').val();
-
-                                    var cursorPosition = this.selectionStart;
-                                    // Search the column for that value
-                                    api
-                                        .column(colIdx)
-                                        .search(
-                                            this.value != '' ?
-                                            regexr.replace('{search}', '(((' + this.value +
-                                                ')))') :
-                                            '',
-                                            this.value != '',
-                                            this.value == ''
-                                        )
-                                        .draw();
-
-                                    $(this)
-                                        .focus()[0]
-                                        .setSelectionRange(cursorPosition, cursorPosition);
-                                });
-                        });
-                },
             });
 
             // Refilter the table
@@ -273,7 +243,7 @@
             table.buttons().container()
                 .appendTo('#myTable_wrapper .col-md-6:eq(0)');
         });
-    </script> --}}
+    </script>
     <script type="text/javascript">
         function visibility3() {
             var x = document.getElementById('create_password');
@@ -340,13 +310,8 @@
             $('#idKu').val(id);
         });
 
-        function idr($p)
-        {
-            $result = 'Rp. ' . number_format($p, 2, ',', '.');
-            return $result;
-        }
+        
     </script>
-
     @yield('custom-script')
 </body>
 

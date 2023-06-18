@@ -26,7 +26,8 @@ use App\Http\Controllers\{
     SekolahController,
     SurveiController,
     PoController,
-    ProductController
+    ProductController,
+    MailtoAurigaController
 };
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\BussinessUnit;
@@ -69,12 +70,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('trashs/departements/restore/{id?}',     [TrashController::class,'restoreDepartements'])->name('trashs.departements.restore');
     Route::delete('trashs/departements/delete/{id?}',   [TrashController::class,'deleteDepartements'])->name('trashs.departements.delete');
     Route::resource('kategoris',                         KategoriController::class);
-    Route::get('/createPo',                              [PoController::class,'createPo'])->name('createPo');
+    Route::get('/createPo',                             [PoController::class,'createPo'])->name('createPo');
+    Route::get('/testExport',                           [PoController::class,'testExport'])->name('testExport');
+    Route::get('/sendMail',                             [PoController::class,'sendMail'])->name('sendMail');
     Route::resource('po',                                PoController::class);
     Route::resource('product',                           ProductController::class);
     Route::resource('business-unit',                     BussinessUnitController::class);
+    Route::get('/get/datatables/bu',               [BussinessUnitController::class, 'getDtRowData'])->name('get.datatables.bu');
     Route::resource('pertanyaans',                       PertanyaanController::class);
     Route::resource('sekolahs',                          SekolahController::class);
+    Route::resource('mailtoauriga',                      MailtoAurigaController::class);
     Route::resource('trashs',                            TrashController::class);
     Route::resource('users',                             UserController::class);
     Route::resource('tasks',                             TaskController::class);

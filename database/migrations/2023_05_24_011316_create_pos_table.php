@@ -31,6 +31,10 @@ class CreatePosTable extends Migration
 
             $table->text('order_type')->nullable();
             $table->text('remarks')->nullable();
+            $table->double('total')->nullable();
+            $table->double('discount')->nullable();
+            $table->double('after_discount')->nullable();
+            $table->double('ppn')->nullable();
             $table->double('grand_total')->nullable();
             $table->softDeletes();
             $table->timestamps();

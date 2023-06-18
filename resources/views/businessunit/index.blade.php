@@ -18,11 +18,13 @@
                             </ol>
                         </nav>
                     </div>
+                    @can('business-create')
                     <div class="col-lg-6 col-5 text-right">
                         <button type="button" class="btn btn-sm btn-neutral" data-toggle="modal"
                             data-target=".bd-create-sekolah">{{ __('Add Bussiness Unit') }}</button>
                         @include('businessunit.modal.create')
                     </div>
+                    @endcan
                 </div>
             </div>
         </div>
@@ -48,7 +50,7 @@
                         <h3 class="mb-0">{{ __('Business Unit') }}</h3>
                     </div>
                     <div class="table-responsive py-2">
-                        <table class="table table-flush" id="myTable">
+                        <table class="table table-condensed dataTable no-footer" role="grid" id="table-bu">
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{ __('#') }}</th>
@@ -57,7 +59,7 @@
                                     <th>Business Unit</th>
                                     <th>Brand Name</th>
                                     <th>Company</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 300px">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -68,13 +70,13 @@
                                     <th>Business Unit</th>
                                     <th>Brand Name</th>
                                     <th>Company</th>
-                                    <th style="text-align: center; width: 150px">{{ __('Action') }}</th>
+                                    <th style="text-align: center; width: 300px">{{ __('Action') }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                                 @foreach ($bu as $b)
                                     <tr>
-                                        <td style="vertical-align: middle">{{ $loop->iteration }}</td>
+                                        <td class="" style="vertical-align: middle">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle">
                                             @if (strlen($b->gambar) > 0)
                                                 <img src="{{ asset('img/business_unit/' . $b->gambar) }}" width="80px"
@@ -88,7 +90,7 @@
                                         <td style="vertical-align: middle">{{ $b->business_unit }}</td>
                                         <td style="vertical-align: middle">{{ $b->brand_name }}</td>
                                         <td style="vertical-align: middle">{{ $b->company }}</td>
-                                        <td style="vertical-align: middle" align="center">
+                                        <td style="vertical-align: middle;width: 300px" align="center">
                                             <a href="#"
                                                 class="btn btn-sm btn-icon btn-default btn-icon-only rounded-circle"
                                                 data-toggle="modal" data-target="#sekolah-show-{{ $b->id }}">
@@ -96,17 +98,21 @@
                                                     title="Show"><i class="fas fa-eye"></i>
                                                 </span>
                                             </a>
+                                            @can('business-edit')
                                             <a href="{{ route('business-unit.edit', $b->id) }}"
                                                 class="btn btn-sm btn-icon btn-primary btn-icon-only rounded-circle"
                                                 data-toggle="tooltip" data-placement="top" title="Edit">
                                                 <span class="btn-inner--icon"><i class="fas fa-pen-square"></i>
                                                 </span>
                                             </a>
+                                            @endcan
+                                            @can('business-delete')
                                             <button onclick="deleteItem(this)" data-id="{{ $b->id }}"
                                                 class="btn btn-sm btn-icon btn-youtube btn-icon-only rounded-circle"
                                                 data-toggle="tooltip" data-placement="top" title="Remove">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            @endcan
                                             @include('businessunit.modal.show')
                                         </td>
                                     </tr>

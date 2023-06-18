@@ -7,6 +7,7 @@ use App\Models\User;
 use Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class BussinessUnitController extends Controller
 {
@@ -136,5 +137,12 @@ class BussinessUnitController extends Controller
                     'title'   => 'Success',
                     'message' => 'Your file has been moved to trash!'
                 ));
+    }
+
+    public function getDtRowData(Request $request)
+    {
+        $bu = BussinessUnit::select(['id','gambar', 'agency_code', 'business_unit', 'brand_name', 'company']);
+        return DataTables::of($bu);
+        dd($bu);
     }
 }
