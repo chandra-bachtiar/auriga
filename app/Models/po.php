@@ -12,7 +12,7 @@ class po extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['id_po','id_bu','no_order','customer_name','address','phone','sales','approval','date','file',
-                            'order_type','remarks','grand_total','created_at','updated_at'];
+                            'order_type','remarks','total','discount','after_discount','ppn','grand_total','created_at','updated_at'];
 
     public function bu()
     {

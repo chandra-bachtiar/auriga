@@ -17,6 +17,7 @@
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^2.53",
+        "phpoffice/phpspreadsheet": "^1.29",
         "realrashid/sweet-alert": "^4.0",
         "spatie/laravel-permission": "^4.2",
         "yajra/laravel-datatables-oracle": "~9.0"

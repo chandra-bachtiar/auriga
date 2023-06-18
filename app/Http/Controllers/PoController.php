@@ -149,6 +149,10 @@ class PoController extends Controller
             'date' => $request->date,
             'order_type' => $request->order_type,
             'approval' => $request->approval,
+            'total' => $request->total,
+            'discount' => $request->discount,
+            'after_discount' => $request->after_discount,
+            'ppn' => $request->ppn,
             'grand_total' => $request->grand_total,
             'items' => $items[0]->po_detail,
             'attachment'=>public_path('excel/po/'.$filename)
