@@ -164,7 +164,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-
+        
         /*
          * Package Service Providers...
          */
@@ -179,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        App\Providers\ExcelServiceProvider::class,
     ],
 
     /*

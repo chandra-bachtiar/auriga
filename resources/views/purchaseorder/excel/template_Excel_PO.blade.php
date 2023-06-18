@@ -6,7 +6,7 @@
 	<title>Export PO</title>
 </head>
 <body>
-    <!-- <img style="display: block; height:40px; width:150px;" src="https://www.dchauriga.com/web_assets/images/logo.svg" alt="">
+    <!--<img style="display: block; height:40px; width:150px;" src="https://www.dchauriga.com/web_assets/images/logo.svg" alt="">
     <p>Permintaan Purchase Order baru telah masuk dengan Nomor PO : PO-19287892</p>
     <h3>Detail Customer</h3> -->
     {{-- <h3>PT.DCH Auriga Indonesia</h3> --}}
@@ -22,13 +22,11 @@
             <td>{{$data['emailData']['no_order']}}</td>
         </tr>
     </table> --}}
-    @php
-        $startCell = $startCell ?? 'A1';
-        list($startColumn, $startRow) = sscanf($startCell, '%[A-Z]%d');
-        $nextRow = $startRow + 1;
-    @endphp
     <table border="1" cellpadding="8">
         <tbody>
+            <tr>
+                <td colspan="10">PT DCH AURIGA INDONESIA</td>
+            </tr>
             <tr>
                 <td rowspan="2" class="head_po">No</td>
                 <td rowspan="2" class="head_po">ITEM NUMBER</td>
@@ -45,6 +43,13 @@
                 <td class="head_po">DISC</td>
                 <td class="head_po">VALUE</td>
             </tr>
+            @php
+                function idr($p){
+                    $result = number_format($p, 2, ',', '.');
+                    return $result;
+                }
+            @endphp
+
             @foreach($data['emailData']['items'] as $u)
                 <tr>
                     <td>{{$loop->iteration}}</td>
@@ -52,11 +57,11 @@
                     <td>{{$u->sku_dch}}</td>
                     <td>{{$u->item_name}}</td>
                     <td>{{$u->uom}}</td>
-                    <td>{{$u->price_exclude}}</td>
-                    <td>{{$u->price_include}}</td>
+                    <td>{{ idr($u->price_exclude) }}</td>
+                    <td>{{ idr($u->price_include) }}</td>
                     <td>{{$u->qty}}</td>
                     <td>{{$u->disc}}</td>
-                    <td>{{$u->value}}</td>
+                    <td>{{ idr($u->value) }}</td>
                 </tr>
             @endforeach
 
@@ -90,14 +95,10 @@
                 <td colspan="2">GRAND TOTAL</td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>{{ idr($data['emailData']['grand_total']) }}</td>
             </tr>
         </tbody>
     </table>
-    @php
-        $tableRange = $startCell . ':C' . $nextRow;
-        $sheet->getStyle($tableRange)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-        $sheet->getStyle($tableRange)->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
-    @endphp
+    
 </body>
 </html>
